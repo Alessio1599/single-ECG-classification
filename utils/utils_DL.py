@@ -60,7 +60,3 @@ def evaluate_model(x_test, y_test, model, class_names):
     conf_matrix = confusion_matrix(y_test, y_test_pred, normalize='true')
     show_confusion_matrix(conf_matrix, class_names)
 
-## F1 
-
-## ROC curve
-#from sklearn.metrics import classification_report, roc_curve

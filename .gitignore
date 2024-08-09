@@ -1,2 +1,11 @@
+css/
 data/
 .DS_Store
+docs/
+Makefile
+
+# Byte-compiled
+__pycache__/
+
+# VScode project settings
+.vscode/

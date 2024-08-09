@@ -1,10 +1,14 @@
 import os
-#import glob
 import numpy as np
 import pandas as pd
 from ipywidgets import interact, IntSlider, fixed
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
+from sklearn.utils.class_weight import compute_class_weight # compute_class_weight returns Array with class_weight_vect[i] the weight for i-th class.
+import sklearn.metrics
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import label_binarize # label_binarize is used to convert labels to binary form
+
 
 def load_data():
     """ 
@@ -33,6 +37,7 @@ def load_data():
 
     return x_train, y_train, x_test, y_test
 
+
 def load_data_RNN():
     """ 
     This function reads the ECG data from the CSV files and returns the training,and test sets, splitted into ECG signals and labels.
@@ -57,7 +62,7 @@ def load_data_RNN():
     
     return train_data, test_data
 
-from sklearn.preprocessing import StandardScaler
+
 def preprocess_for_hyperparameter(x_train, y_train, x_test, y_test):
     """ 
     Args:
@@ -98,7 +103,6 @@ def preprocess_for_hyperparameter(x_train, y_train, x_test, y_test):
     
 
 # Weighted Loss
-from sklearn.utils.class_weight import compute_class_weight # compute_class_weight returns Array with class_weight_vect[i] the weight for i-th class.
 def class_weights(y_train):
     """ 
     Calculate class weights to handle imbalance.
@@ -144,6 +148,7 @@ def plot_interactive_idx(x, y):
     # Create a slider to explore the data
     start_idx = IntSlider(min=0, max=len(x)-1, step=1, description='Index') 
     interact(plot_ECG, x=fixed(x), y=fixed(y), idx=start_idx) 
+
 
 def plot_history(history,metric=None):
     """ 
@@ -199,8 +204,6 @@ def show_confusion_matrix(conf_matrix, class_names, figsize=(10,10)):
                            ha='center', va='center', color='w')
     plt.show() #block=False
 
-import sklearn.metrics
-from sklearn.preprocessing import label_binarize # label_binarize is used to convert labels to binary form
 
 def plot_roc_multiclass(name, labels, predictions, num_classes, **kwargs):
     """ 

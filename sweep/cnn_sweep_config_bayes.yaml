@@ -1,9 +1,9 @@
 # The program to run
-program: hyperparameter_optimization.py # I have to create a train.py file in the same directory
+program: CNN_hyperparameter_optimization.py # I have to create a train.py file in the same directory
 
 # Method can be grid, random or bayes
 method: bayes #random #grid # grid search
-
+name: cnn_sweep
 # Metric to optimize
 metric:
   goal: minimize
