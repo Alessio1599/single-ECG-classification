@@ -8,7 +8,6 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
 single-ECG-Classification/
 ├── CNN_hyperparameter_optimization.py
 ├── CNN_train.py
-├── Makefile
 ├── README.md
 ├── RNN_train.py
 ├── RNN_train_2.py
@@ -20,21 +19,11 @@ single-ECG-Classification/
 │   ├── ptbdb_abnormal.csv
 │   └── ptbdb_normal.csv
 ├── data_exploratory.py
-├── docs
-│   ├── DL - Project.pdf
-│   ├── ECG-classification proposal.pages
-│   ├── ECG-classification-proposal.md
-│   └── Final presentation.key
 ├── main_anomaly.py
 ├── models
 │   ├── CNN.py
 │   └── RNN.py
 ├── requirements.txt
-├── runs
-│   ├── Run1.png
-│   ├── Run2.png
-│   ├── Run3.png
-│   └── Runs.numbers
 ├── sweep
 │   ├── cnn_sweep_config_bayes.yaml
 │   ├── rnn_sweep_config_bayes.yaml
