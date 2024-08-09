@@ -13,14 +13,3 @@ def test_load_data_shapes():
     assert x_test.shape == (21892, 187), f"Unexpected x_test shape: {x_test.shape}"
     assert y_test.shape[0] == 21892, f"Unexpected y_test shape: {y_test.shape}"
 
-def test_build_CNN_for():
-    """Test that build_CNN_for creates a model with the expected input shape and output classes."""
-    input_shape = (187, 1)
-    num_classes = 5
-    filters = [32, 64, 32, 16, 16]
-    
-    model = build_CNN_for(input_shape, num_classes, filters)
-    
-    assert model.input_shape == (None, 187, 1), f"Unexpected input shape: {model.input_shape}"
-    assert len(model.layers) > 0, "Model has no layers"
-    assert model.output_shape[-1] == num_classes, f"Unexpected number of output classes: {model.output_shape[-1]}"

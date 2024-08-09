@@ -3,6 +3,7 @@ data/
 .DS_Store
 docs/
 Makefile
+runs/
 
 # Byte-compiled
 __pycache__/
