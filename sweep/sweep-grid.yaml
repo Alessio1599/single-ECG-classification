@@ -1,0 +1,15 @@
+# The program to run
+program: hyperparameter_optimization.py # I have to create a train.py file in the same directory
+
+# Method can be grid, random or bayes
+method: grid #grid # grid search
+
+# Metric to optimize
+metric:
+  goal: minimize
+  name: val_loss
+
+# Parameters space to search
+parameters:
+  epochs:
+    value: 20
