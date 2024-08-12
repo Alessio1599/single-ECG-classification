@@ -75,8 +75,10 @@ y_test_pred = np.argsort(y_test_conf_pred,axis=1)[:,-1] # Predicted classes, the
 conf_matrix = confusion_matrix(y_test, y_test_pred, normalize='true')
 show_confusion_matrix(conf_matrix, class_names)
 
-# Example for multiclass classification
+# ROC curve for multiclass classification
 num_classes = len(np.unique(y_test))
 y_test_conf_pred_probs = model.predict(x_test)  # Get probability scores for all classes
-
 plot_roc_multiclass("Model ROC", y_test, y_test_conf_pred_probs, num_classes)
+
+## Metrics
+from sklearn.metrics import classification_report

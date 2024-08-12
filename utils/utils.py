@@ -11,34 +11,38 @@ from sklearn.preprocessing import label_binarize # label_binarize is used to con
 
 
 def load_data():
-    """ 
-    This function reads the ECG data from the CSV files and returns the training,and test sets, splitted into ECG signals and labels.
-    Returns:
-    x_train: numpy array, training data
-    y_train: numpy array, training labels
-    x_test: numpy array, test data
-    y_test: numpy array, test labels
-    class_labels: numpy array, unique class labels
-    class_names: dictionary, mapping class indices to class names
     """
-    base_dir = os.path.dirname(os.path.dirname(__file__))
-    data_dir = os.path.join(base_dir,'data') # 'ECG' to add of the utils.py file is in the ECG folde and not in the utils folder
+    Reads ECG data from CSV files and returns training and test sets, including class labels and names.
 
-    #file_paths = glob.glob(os.path.join(data_dir, '*.csv'))
-
-    #nRowsRead = 1000 # specify 'None' if want to read whole file
-    train_df = pd.read_csv(os.path.join(data_dir, 'mitbih_train.csv'), delimiter=',', header=None) #87554 rows × 188 columns
-    test_df = pd.read_csv(os.path.join(data_dir, 'mitbih_test.csv'), delimiter=',', header=None) #21892 rows × 188 columns
-    3
-    ## Separate ECG signals and labels (training and test)
-    x_train = train_df.iloc[:, :-1].values # Numpy array # (87554, 187)
-    y_train = train_df.iloc[:, -1].values # Numpy array  # (87554,)
-
-    x_test = test_df.iloc[:, :-1].values 
-    y_test = test_df.iloc[:, -1].values 
+    Returns
+    -------
+    x_train : numpy array
+        Training data
+    y_train : numpy array
+        Training labels
+    x_test : numpy array
+        Test data
+    y_test : numpy array
+        Test labels
+    class_labels : numpy array
+        Unique class labels
+    class_names : dict
+        Mapping from class indices to class names
+    """
     
-    class_labels = np.unique(y_train) # Get the unique class labels 0, 1, 2, 3, 4
+    base_dir = os.path.dirname(os.path.dirname(__file__))
+    data_dir = os.path.join(base_dir, 'data')
 
+    train_df = pd.read_csv(os.path.join(data_dir, 'mitbih_train.csv'), header=None)
+    test_df = pd.read_csv(os.path.join(data_dir, 'mitbih_test.csv'), header=None)
+
+    x_train = train_df.iloc[:, :-1].values
+    y_train = train_df.iloc[:, -1].values
+
+    x_test = test_df.iloc[:, :-1].values
+    y_test = test_df.iloc[:, -1].values
+
+    class_labels = np.unique(y_train)
     class_names = {
         0: "Normal Beats",
         1: "Supraventricular Ectopy Beats",
@@ -50,44 +54,58 @@ def load_data():
     return x_train, y_train, x_test, y_test, class_labels, class_names
 
 
+
 def load_data_RNN():
-    """ 
-    This function reads the ECG data from the CSV files and returns the training,and test sets, splitted into ECG signals and labels.
-    Returns:
-    x_train: numpy array, training data
-    y_train: numpy array, training labels
-    x_test: numpy array, test data
-    y_test: numpy array, test labels
+    """
+    Reads ECG data from CSV files and returns the training and test sets.
+
+    Returns
+    -------
+    train_data : numpy array
+        Training data including labels
+    test_data : numpy array
+        Test data including labels
     """
     base_dir = os.path.dirname(os.path.dirname(__file__))
     data_dir = os.path.join(base_dir,'data') # 'ECG' to add of the utils.py file is in the ECG folde and not in the utils folder
 
     #file_paths = glob.glob(os.path.join(data_dir, '*.csv'))
 
-    #nRowsRead = 1000 # specify 'None' if want to read whole file
     train_df = pd.read_csv(os.path.join(data_dir, 'mitbih_train.csv'), delimiter=',', header=None) #87554 rows × 188 columns
     test_df = pd.read_csv(os.path.join(data_dir, 'mitbih_test.csv'), delimiter=',', header=None) #21892 rows × 188 columns
-    3
     
     train_data = train_df.values
     test_data = test_df.values
+    
+    # train_data = pd.read_csv(os.path.join(data_dir, 'mitbih_train.csv'), header=None).values # in one row
     
     return train_data, test_data
 
 
 def preprocess_for_hyperparameter(x_train, y_train, x_test, y_test):
-    """ 
-    Args:
-    x_train: numpy array, training data
-    y_train: numpy array, training labels
-    x_test: numpy array, test data
-    y_test: numpy array, test labels
+    """Preprocess the data for hyperparameter optimization. 
     
-    Returns:
-    x_train: numpy array, training data
-    y_train: numpy array, training labels
-    x_test: numpy array, test data
-    y_test: numpy array, test labels
+    Parameters
+    ----------
+    x_train : numpy array, 
+        training data
+    y_train: numpy array, 
+        training labels
+    x_test: numpy array, 
+        test data
+    y_test: numpy array, 
+        test labels
+    
+    Returns
+    -------
+    x_train : numpy array, 
+        training data
+    y_train : numpy array, 
+        training labels
+    x_test : numpy array, 
+        test data
+    y_test : numpy array, 
+        test labels
     """
 
     # I want to specify the number of samples for the validation set
@@ -105,24 +123,30 @@ def preprocess_for_hyperparameter(x_train, y_train, x_test, y_test):
 
 # Weighted Loss
 def class_weights(y_train):
-    """ 
-    Calculate class weights to handle imbalance.
-    Arg:
-    y_train: array, training labels
-    Returns:
-    class_weights_dict: dictionary, mapping class indices to weights
+    """
+    Calculates class weights to handle class imbalance.
+
+    Parameters
+    ----------
+    y_train : numpy array
+        Training labels
+
+    Returns
+    -------
+    class_weights_dict : dict
+        Mapping of class indices to weights
     """
     class_weights = compute_class_weight(
         class_weight='balanced',
         classes=np.unique(y_train),
         y = y_train
     )
-    print("Computed class weights:", class_weights) # array of 5 elements, not dictionary
+    # print("Computed class weights:", class_weights) # array of 5 elements, not dictionary
     # class_weights[0]= 0.24, class_weights[1]= ... class_weights[4]= ...
     
     # Create a dictionary mapping class indices to weights
     class_weights_dict = dict(enumerate(class_weights)) # enumerate returns an iterator with index and value pairs like [(0, 0.24), (1, 0.5), (2, 0.75), (3, 1.0), (4, 1.25)] and then dictionary {0: 0.24, 1: 0.5, 2: 0.75, 3: 1.0, 4: 1.25}
-    print("Class weights:", class_weights_dict)
+    #print("Class weights:", class_weights_dict)
     return class_weights_dict
 
 
