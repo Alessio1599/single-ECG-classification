@@ -18,6 +18,8 @@ def load_data():
     y_train: numpy array, training labels
     x_test: numpy array, test data
     y_test: numpy array, test labels
+    class_labels: numpy array, unique class labels
+    class_names: dictionary, mapping class indices to class names
     """
     base_dir = os.path.dirname(os.path.dirname(__file__))
     data_dir = os.path.join(base_dir,'data') # 'ECG' to add of the utils.py file is in the ECG folde and not in the utils folder
@@ -34,8 +36,18 @@ def load_data():
 
     x_test = test_df.iloc[:, :-1].values 
     y_test = test_df.iloc[:, -1].values 
+    
+    class_labels = np.unique(y_train) # Get the unique class labels 0, 1, 2, 3, 4
 
-    return x_train, y_train, x_test, y_test
+    class_names = {
+        0: "Normal Beats",
+        1: "Supraventricular Ectopy Beats",
+        2: "Ventricular Ectopy Beats",
+        3: "Fusion Beats",
+        4: "Unclassifiable Beats"
+    }
+
+    return x_train, y_train, x_test, y_test, class_labels, class_names
 
 
 def load_data_RNN():
@@ -76,19 +88,8 @@ def preprocess_for_hyperparameter(x_train, y_train, x_test, y_test):
     y_train: numpy array, training labels
     x_test: numpy array, test data
     y_test: numpy array, test labels
-    class_labels: numpy array, unique class labels
-    class_names: dictionary, mapping class indices to class names
     """
-    class_labels = np.unique(y_train) # Get the unique class labels 0, 1, 2, 3, 4
 
-    class_names = {
-        0: "Normal Beats",
-        1: "Supraventricular Ectopy Beats",
-        2: "Ventricular Ectopy Beats",
-        3: "Fusion Beats",
-        4: "Unclassifiable Beats"
-    }
-    
     # I want to specify the number of samples for the validation set
     val_size = 21892 # 20% of the total samples
     # random state is set to 42 for reproducibility
@@ -99,7 +100,7 @@ def preprocess_for_hyperparameter(x_train, y_train, x_test, y_test):
     x_train = scaler.transform(x_train)
     x_val = scaler.transform(x_val)
     x_test = scaler.transform(x_test)
-    return x_train, y_train, x_val, y_val, x_test, y_test, class_labels, class_names
+    return x_train, y_train, x_val, y_val, x_test, y_test
     
 
 # Weighted Loss

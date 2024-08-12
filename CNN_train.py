@@ -5,13 +5,12 @@ import tensorflow as tf
 from utils.utils import load_data, class_weights, show_confusion_matrix, plot_history, plot_roc_multiclass
 from models.CNN import build_CNN
 
-x_train, y_train, x_test, y_test= load_data()
+x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
 
 # Get the class weights
 class_weights_dict = class_weights(y_train)
 
-# %% MODEL TRAINING
-
+# Import best hyperparameters, best_hyperparameters is a dictionary
 best_hyperparameters = {
     'layer_1_size': 64,
     'layer_2_size': 64,
@@ -20,13 +19,12 @@ best_hyperparameters = {
     'dropout_rate': 0.4,
     'learning_rate': 4e-4,
     'batch_size': 32,
-    'epochs': 20 # I've setted to 5 just to see the performance of the model
+    'epochs': 1 # I've setted to 1 just to compare the result with the other models #20 # I've setted to 5 just to see the performance of the model
 }
 
 input_shape = (x_train.shape[1], 1) # (187, 1)
 output_shape = len(np.unique(y_train))
 
-# Import best hyperparameters, best_hyperparameters is a dictionary
 model = build_CNN(
     input_shape=input_shape,
     output_shape=output_shape,
