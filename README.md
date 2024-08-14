@@ -1,6 +1,8 @@
 # 1. ECG Classification
 Arrhythmia is a unique type of heart disease which produces inefficient and irregular heartbeat. This is a cardiac disease which is diagnosed through electrocardiogram (ECG) procedure. 
 
+## Comments
+- I can try to perform transfer learning. I saw a good paper, 1D ECG signals, maybe I can use ResNet
 
 ## 1.4. Directory structure
 

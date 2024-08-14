@@ -47,7 +47,7 @@ model.compile(
 )
 
 checkpoint = tf.keras.callbacks.ModelCheckpoint(
-    'best_model.keras',
+    'models/best_RNN_model.keras',
     monitor='val_accuracy',
     save_best_only=True
 )
