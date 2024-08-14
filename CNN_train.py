@@ -69,6 +69,8 @@ history = model.fit(
 
 plot_history(history, metric='accuracy')
 
+# %% eval.py
+
 ## Confusion Matrix
 y_test_conf_pred = model.predict(x_test) # Predicted probabilities
 y_test_pred = np.argsort(y_test_conf_pred,axis=1)[:,-1] # Predicted classes, the one with the highest probability
@@ -82,3 +84,26 @@ plot_roc_multiclass("Model ROC", y_test, y_test_conf_pred_probs, num_classes)
 
 ## Metrics
 from sklearn.metrics import classification_report
+CNN_report = classification_report(
+    y_test, 
+    y_test_pred,
+    labels=[0,1,2,3,4],
+    target_names=['Normal Beats',"Supraventricular Ectopy Beats","Ventricular Ectopy Beats","Fusion Beats","Unclassifiable Beats"],
+    output_dict=True)
+
+import seaborn as sns
+import pandas as pd
+
+plt.figure(figsize=(8,8))
+# Convert classification report to DataFrame
+clf_report_df = pd.DataFrame(CNN_report).iloc[:-1, :].T # .iloc[:-1, :] to exclude support
+ax = sns.heatmap(clf_report_df, annot=True, cmap='Blues')
+ax.set_yticklabels(ax.get_yticklabels(),fontsize=12, rotation=0)
+plt.title("Classification Report")
+
+# %% Code to save the model 
+model.save('CNN_model.h5')
+
+# Load the model
+from tensorflow.keras.models import load_model
+model = load_model('CNN_model.h5')

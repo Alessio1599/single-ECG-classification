@@ -1,3 +1,6 @@
+""" 
+Here I have the functions with a good description
+"""
 import os
 import numpy as np
 import pandas as pd
@@ -152,14 +155,15 @@ def class_weights(y_train):
 
 ## Interactive exploration, can be used in Jupyter Notebook
 def plot_interactive_idx(x, y):
-    """ 
-    This function plots an ECG signal and its label interactively.
-    Can be used to explore the data (training and test) interactively.
-    Can be used in Jupyter Notebook.
-    
-    Args:
-    x: numpy array, training data
-    y: numpy array, training labels
+    """
+    Plots an ECG signal and its label interactively.
+
+    Parameters
+    ----------
+    x : numpy array
+        Data
+    y : numpy array
+        Labels
     """
     def plot_ECG(x, y, idx):
         """ 
@@ -176,12 +180,15 @@ def plot_interactive_idx(x, y):
 
 
 def plot_history(history,metric=None):
-    """ 
-    This function plots the training and validation loss and an optional metric.
-    
-    Args:
-    history: history object, output of the fit method of a keras model
-    metric: string, optional, metric to plot
+    """
+    Plots training and validation loss and an optional metric.
+
+    Parameters
+    ----------
+    history : keras.callbacks.History
+        History object returned by the `fit` method of a Keras model
+    metric : str, optional
+        Name of the metric to plot
     """
     fig, ax1 = plt.subplots(figsize=(6, 6)) #figsize=(10,8)
 
@@ -207,12 +214,17 @@ def plot_history(history,metric=None):
     plt.show() #block=False
     
 def show_confusion_matrix(conf_matrix, class_names, figsize=(10,10)):
-    """ 
-    This function plots the confusion matrix.
-    Args:
-    conf_matrix: numpy array, confusion matrix
-    class_names: list, class names
-    figsize: tuple, size of the figure
+    """
+    Plots the confusion matrix.
+
+    Parameters
+    ----------
+    conf_matrix : numpy array
+        Confusion matrix
+    class_names : list
+        Class names
+    figsize : tuple, optional
+        Size of the figure
     """
     fig, ax = plt.subplots(figsize=figsize)
     img = ax.matshow(conf_matrix)
@@ -231,14 +243,21 @@ def show_confusion_matrix(conf_matrix, class_names, figsize=(10,10)):
 
 
 def plot_roc_multiclass(name, labels, predictions, num_classes, **kwargs):
-    """ 
-    Plot ROC curve for multiclass classification with colored lines only.
-    Args:
-    name: str, name of ..
-    labels: array, true labels
-    predictions: array, predicted probabilities
-    num_classes: int, number of classes
-    kwargs: dict, additional arguments for the plot function
+    """
+    Plots the ROC curve for multiclass classification.
+
+    Parameters
+    ----------
+    name : str
+        Name for the plot title
+    labels : numpy array
+        True labels
+    predictions : numpy array
+        Predicted probabilities
+    num_classes : int
+        Number of classes
+    kwargs : dict, optional
+        Additional arguments for the plot function
     """
     labels_bin = label_binarize(labels, classes=range(num_classes))
     plt.figure(figsize=(12, 8))  # Create a new figure with a specific size
