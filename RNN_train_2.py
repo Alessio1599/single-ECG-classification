@@ -1,5 +1,5 @@
 """ 
-This code is functioning,
+This code is functioning!!!
 """
 import numpy as np
 import tensorflow as tf
@@ -7,7 +7,7 @@ from sklearn.preprocessing import StandardScaler
 from utils.utils import load_data, class_weights, plot_history
 from models.RNN import build_RNN, build_deep_rnn
 
-x_train, y_train, x_test, y_test = load_data() 
+x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
 print('x_train shape: ',x_train.shape) # (87554, 187)
 print('y_train shape: ',y_train.shape) # (87554,)
 
@@ -34,7 +34,7 @@ model = build_RNN(input_shape= input_shape, output_shape=output_shape)
 model.summary()
 
 learning_rate = 1e-3
-epochs = 10
+epochs = 2 #10
 batch_size = 32
 
 # Compile the model
@@ -71,3 +71,5 @@ history = model.fit(
 )
 
 plot_history(history, metric='accuracy')
+
+model.save('models/RNN_model.keras')
