@@ -17,7 +17,7 @@ best_hyperparameters = {
     'dropout_rate': 0.4,
     'learning_rate': 4e-4,
     'batch_size': 32,
-    'epochs': 2 # I've setted to 1 just to compare the result with the other models #20 # I've setted to 5 just to see the performance of the model
+    'epochs': 15 # I've setted to 1 just to compare the result with the other models #20 # I've setted to 5 just to see the performance of the model
 }
 
 input_shape = (x_train.shape[1], 1) # (187, 1)
@@ -44,7 +44,7 @@ model.compile(
 )
 
 checkpoint = tf.keras.callbacks.ModelCheckpoint(
-    'best_model.keras',
+    'models/cnn/best_cnn_model_v1.keras',
     monitor='val_accuracy',
     save_best_only=True
 )
@@ -68,5 +68,3 @@ history = model.fit(
 )
 
 plot_history(history, metric='accuracy')
-
-model.save('models/CNN_model.keras')
