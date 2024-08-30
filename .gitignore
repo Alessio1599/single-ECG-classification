@@ -5,7 +5,7 @@ docs/
 Makefile
 runs/
 main_anomaly.py
-
+RNN_train_timeseriesgenerator.py
 
 # Byte-compiled
 __pycache__/

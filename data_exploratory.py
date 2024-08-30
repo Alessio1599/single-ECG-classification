@@ -1,6 +1,3 @@
-""" 
-I have changed get_data with load_data...
-"""
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
@@ -13,7 +10,7 @@ x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
 x_train, y_train, x_val, y_val, x_test, y_test = preprocess_for_hyperparameter(x_train, y_train, x_test, y_test)
 
 # Interactive exploration of the training data
-# plot_interactive_idx(x_train, y_train)  
+plot_interactive_idx(x_train, y_train) # the output can be seen in a jupyter notebook 
 
 # %% CLASS DISTRIBUTION
 
@@ -25,11 +22,8 @@ print(f"Examples:\n 0: {class_counts[0]} ({class_counts[0]/total*100:.2f}%)")
 print(f" 1: {class_counts[1]} ({class_counts[1]/total*100:.2f}%)")
 print(f" 2: {class_counts[2]} ({class_counts[2]/total*100:.2f}%)")
 print(f" 3: {class_counts[3]} ({class_counts[3]/total*100:.2f}%)")
-print(f" 4: {class_counts[4]} ({class_counts[4]/total*100:.2f}%)")
-# I was counting the number of samples in each class, because I wanted to manually compute the weights, fortunately I found a function that does this for me
-# I could do this using a for cycle..       
+print(f" 4: {class_counts[4]} ({class_counts[4]/total*100:.2f}%)")   
 
-## Assign meaningful names to the class labels based on domain knowledge
 class_names = {
     0: "Normal Beats",
     1: "Supraventricular Ectopy Beats",
@@ -42,7 +36,7 @@ class_names = {
 for label in class_labels:
     print(f"Class label {label}: {class_names[label]}")
 
-# %% visualization of the distribution of the classes in the training, validation, and test sets
+# %% Visualization of the distribution of the classes in the training, validation, and test sets
 
 import seaborn as sns
 def plot_distribution_sets(y_train, y_val, y_test): 

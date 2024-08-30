@@ -1,6 +1,3 @@
-""" 
-Here I have the functions with a good description
-"""
 import os
 import numpy as np
 import pandas as pd

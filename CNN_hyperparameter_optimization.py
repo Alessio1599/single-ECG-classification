@@ -1,18 +1,11 @@
 """ 
-HYPERPARAMETER OPTIMIZATION -> choose the best hyperparameters for the model
-Then I will train the model with the best hyperparameters on the whole training set(training+validation) and evaluate it on the test set.
-
-I've created also train.py and eval.py.  Then I deleted them. and I've created utils_DL.py.
-Because the main was too long and I wanted to separate the training and evaluation process.
-
-- I should improve the loss or the accuracy of the model. I should consider certain metrics to evaluate the model.
 
 TO-DO:
 - I will move all the prints in the jupyter notebook
 - Check the best practices for the hypepramaeter optimization
 - Adding (block=False) I cannot see the plots at all
 
-Babies Comment:
+Comment:
 - I can use a lower number of epoch for the hyperparameter optimization. I will use a high number of epochs for the final training.
 - Pay attention to the commas!!! 
 

@@ -1,8 +1,6 @@
 # 1. ECG Classification
 Arrhythmia is a unique type of heart disease which produces inefficient and irregular heartbeat. This is a cardiac disease which is diagnosed through electrocardiogram (ECG) procedure. 
 
-## Comments
-- I can try to perform transfer learning. I saw a good paper, 1D ECG signals, maybe I can use ResNet
 
 ## 1.4. Directory structure
 
@@ -53,10 +51,6 @@ Classes: ['N': 0, 'S': 1, 'V': 2, 'F': 3, 'Q': 4]
 
 ## 1.6. Models
 
-**Hyperparameters**
-- Learning_rate = 0.0001 - 0.001
-- Number of hidden layers
-- Regularization L1, L2? 
   
 ## 1.7. References
 1. [Classification on imbalanced data, Tensorflow](https://www.tensorflow.org/tutorials/structured_data/imbalanced_data#class_weights)

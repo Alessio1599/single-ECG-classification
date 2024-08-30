@@ -1,4 +1,5 @@
 """ 
+Comments:
 I can upload the two models CNN and RNN
 I can create a function to generate the report for the two models
 And then I can compare the two models using barplots
