@@ -1,5 +1,4 @@
 """ 
-
 TO-DO:
 - I will move all the prints in the jupyter notebook
 - Check the best practices for the hypepramaeter optimization
