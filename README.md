@@ -7,6 +7,7 @@ This repository contains code for training and optimizing deep learning models (
 
 ## Directory structure
 
+```
 single-ECG-Classification/
 ├── CNN_hyperparameter_optimization.py  # Script for CNN hyperparameter optimization
 ├── CNN_train.py                        # Script for training CNN model
@@ -36,7 +37,7 @@ single-ECG-Classification/
 └── wandb/
     ├── main_wandb.py                   # Wandb integration script
     └── main_wandb2.py                  # Alternative Wandb integration script
-
+```
 
 ## Dataset 
 [The MIT-BIH Arrhythmia Dataset](https://www.physionet.org/physiobank/database/mitdb/) is used for training and testing the models. It includes the following classes:
