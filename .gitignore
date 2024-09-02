@@ -6,6 +6,7 @@ Makefile
 runs/
 main_anomaly.py
 RNN_train_timeseriesgenerator.py
+wandb/
 
 # Byte-compiled
 __pycache__/
