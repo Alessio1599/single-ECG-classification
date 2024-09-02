@@ -16,7 +16,7 @@ import tensorflow as tf
 from tensorflow import keras
 import wandb
 
-from utils.utils import load_data, preprocess_for_hyperparameter, class_weights ,plot_history, show_confusion_matrix
+from utils.utils import load_data, preprocess_for_hyperparameter, class_weights ,plot_history
 #from utils.utils_DL import train_model, evaluate_model
 from models.CNN import build_CNN
 
@@ -111,6 +111,6 @@ plot_history(history, metric='accuracy')
 
 """Command line 
 wandb sweep config.yaml
-Since it is inside a folder wandb sweep sweep/sweep-bayes.yaml
+Since it is inside a folder wandb sweep hyperparameter tuning/sweep_conf/sweep-bayes.yaml
 wandb agent neuroeng/single-ECG-classification/c0bmfji5 --count 4
 """
