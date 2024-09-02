@@ -31,7 +31,6 @@ def evaluate_model(model, x_test, y_test, class_names):
     - Confusion matrix using the provided `show_confusion_matrix` function.
     - ROC curve for multiclass classification using the provided `plot_roc_multiclass` function.
 
-
     Parameters
     ----------
     model : tensorflow.keras.Model
