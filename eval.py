@@ -6,11 +6,16 @@ And then I can compare the two models using barplots
 
 Maybe I can try to use a subplots (to see confusion matrix, roc curve in a single plot for a single model) for the different plots
 """
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
+
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import classification_report
 import tensorflow as tf
+
 from utils.utils import load_data, show_confusion_matrix, plot_roc_multiclass
 from utils.utils import load_data
 from tensorflow.keras.models import load_model
@@ -62,12 +67,6 @@ evaluate_model(cnn_model, x_test, y_test, class_names)
 evaluate_model(rnn_model, x_test, y_test, class_names) # I have a problem with the RNN model
 
 
-
-import seaborn as sns
-import pandas as pd
-
-from sklearn.metrics import classification_report
-import pandas as pd
 
 def generate_metrics_report(model, x_test, y_test, class_names):
     
@@ -133,6 +132,7 @@ def generate_metrics_report(model, x_test, y_test, class_names):
     }
     
     return report_df, macro_average_metrics
+
 
 def classification_report_heatmap(report_df):
     """
