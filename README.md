@@ -1,12 +1,18 @@
 # ECG Classification
-Arrhythmia is a unique type of heart disease which produces inefficient and irregular heartbeat. This is a cardiac disease which is diagnosed through electrocardiogram (ECG) procedure. 
-
-# Project Overview
-
 This repository contains code for training and optimizing deep learning models (CNN and RNN) to classify ECG signals into different arrhythmia categories using the [MIT-BIH Arrhythmia Dataset](https://www.physionet.org/physiobank/database/mitdb/) . The project implements hyperparameter optimization using Weights & Biases (Wandb) for better model tuning.
 
-## Directory structure
+Arrhythmia is a unique type of heart disease which produces inefficient and irregular heartbeat. This is a cardiac disease which is diagnosed through electrocardiogram (ECG) procedure. 
 
+## Table of contents
+- [ECG Classification](#ecg-classification)
+  - [Table of contents](#table-of-contents)
+  - [Directory structure](#directory-structure)
+  - [Dataset](#dataset)
+  - [Models](#models)
+- [Links](#links)
+  - [References](#references)
+
+## Directory structure
 ```
 single-ECG-Classification/
 ├── CNN_hyperparameter_optimization.py  # Script for CNN hyperparameter optimization
@@ -48,6 +54,7 @@ single-ECG-Classification/
 - 4: "Unclassifiable Beats"
 
 ## Models
+
 
 # Links
 - [Kaggle repository](https://www.kaggle.com/code/alessio1999/single-ecg-classification)
