@@ -5,6 +5,7 @@ data/
 docs/
 Makefile
 runs/
+other_codes/
 main_anomaly.py
 RNN_train_timeseriesgenerator.py
 wandb/
