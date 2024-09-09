@@ -11,7 +11,7 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
   - [Installation](#installation)
   - [Models](#models)
   - [Hyperparameter Tuning](#hyperparameter-tuning)
-    - [Documentation](#documentation)
+  - [Documentation](#documentation)
   - [Links](#links)
   - [References](#references)
 
@@ -88,7 +88,7 @@ To optimize the hyperparameters for the models, follow these steps:
    - Refer to the `main_wandb.py` and `main_wandb2.py` scripts for generating visualizations and reports.
 
 
-### Documentation
+## Documentation
 Refer to the `docs` directory for detailed documentation, including the project proposal and final presentation.
 
 ## Links
