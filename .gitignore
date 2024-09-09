@@ -1,3 +1,4 @@
+archive/
 css/
 comments.md
 data/
@@ -10,6 +11,8 @@ main_anomaly.py
 RNN_train_timeseriesgenerator.py
 wandb/
 test/
+todo.md
+notes/
 
 # Byte-compiled
 __pycache__/
