@@ -6,16 +6,17 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
 ## Table of contents
 - [ECG Classification](#ecg-classification)
   - [Table of contents](#table-of-contents)
-  - [Directory structure](#directory-structure)
+  - [Project structure](#project-structure)
   - [Dataset](#dataset)
   - [Installation](#installation)
   - [Models](#models)
   - [Hyperparameter Tuning](#hyperparameter-tuning)
     - [Documentation](#documentation)
-- [Links](#links)
+  - [Links](#links)
   - [References](#references)
 
-## Directory structure
+## Project structure
+The project directory is organized as follows:
 ```
 single-ECG-Classification/
 ├── CNN_hyperparameter_optimization.py  # Script for CNN hyperparameter optimization
@@ -90,7 +91,7 @@ To optimize the hyperparameters for the models, follow these steps:
 ### Documentation
 Refer to the `docs` directory for detailed documentation, including the project proposal and final presentation.
 
-# Links
+## Links
 - [Kaggle repository](https://www.kaggle.com/code/alessio1999/single-ecg-classification)
   
 ## References
