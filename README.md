@@ -7,6 +7,7 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
 - [ECG Classification](#ecg-classification)
   - [Table of contents](#table-of-contents)
   - [Project structure](#project-structure)
+    - [Description of Key Directories and Files](#description-of-key-directories-and-files)
   - [Dataset](#dataset)
   - [Installation](#installation)
   - [Models](#models)
@@ -48,6 +49,19 @@ single-ECG-Classification/
     ├── main_wandb.py                   # Wandb integration script
     └── main_wandb2.py                  # Alternative Wandb integration script
 ```
+
+### Description of Key Directories and Files
+- archive/: Contains archived scripts and files not actively used.
+- css/: Contains CSS files for styling markdown documents.
+- data/: Stores the dataset files used in the project.
+- docs/: Includes all documentation related to the project such as proposals and research papers.
+- hyperparameter tuning/: Contains scripts and configuration files for hyperparameter tuning.
+- models/: Directory for model definitions and saved model files.
+- notes/: Collection of various notes, comments, questions, suggestions, and to-do items.
+- runs/: Contains outputs and visualizations from training runs.
+- training/: Scripts used for training the models.
+- utils/: Utility scripts used throughout the project.
+- wandb/: Scripts for integrating with Weights & Biases for experiment tracking.
 
 ## Dataset 
 [The MIT-BIH Arrhythmia Dataset](https://www.physionet.org/physiobank/database/mitdb/) is used for training and testing the models. It includes the following classes:
