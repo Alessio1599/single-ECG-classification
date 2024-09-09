@@ -49,17 +49,19 @@ single-ECG-Classification/
 ```
 
 ### Description of Key Directories and Files
-- archive/: Contains archived scripts and files not actively used.
-- css/: Contains CSS files for styling markdown documents.
-- data/: Stores the dataset files used in the project.
-- docs/: Includes all documentation related to the project such as proposals and research papers.
-- hyperparameter tuning/: Contains scripts and configuration files for hyperparameter tuning.
-- models/: Directory for model definitions and saved model files.
-- notes/: Collection of various notes, comments, questions, suggestions, and to-do items.
-- runs/: Contains outputs and visualizations from training runs.
-- training/: Scripts used for training the models.
-- utils/: Utility scripts used throughout the project.
-- wandb/: Scripts for integrating with Weights & Biases for experiment tracking.
+- hyperparameter tuning/: Includes scripts and configuration files for hyperparameter optimization:
+  - CNN_hyperparameter_optimization.py and RNN_hyperparameter_optimization.py for running the hyperparameter optimization.
+  - sweep_conf/: Contains YAML configuration files for defining sweep parameters. 
+    - cnn_sweep_config_bayes.yaml and rnn_sweep_config_bayes.yaml for CNN and RNN respectively.
+    - sweep-grid.yaml for grid search configurations.
+- models/: Contains model definitions and saved models:
+  - CNN.py and RNN.py: Scripts defining the CNN and RNN architectures.
+    - cnn/ and rnn/: Directories containing the trained model files.
+    - best_cnn_model_v1.keras and best_RNN_model_v1.keras are the saved models for CNN and RNN respectively.
+- training/: Scripts used for training the models:
+  - CNN_train.py and RNN_train.py for training CNN and RNN models respectively.
+- utils/: Utility scripts used throughout the project:
+  - utils.py and utils_DL.py: Contain helper functions and utilities for data processing and model training.
 
 ## Dataset 
 [The MIT-BIH Arrhythmia Dataset](https://www.physionet.org/physiobank/database/mitdb/) is used for training and testing the models. It includes the following classes:
