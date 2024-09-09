@@ -20,34 +20,32 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
 The project directory is organized as follows:
 ```
 single-ECG-Classification/
-├── CNN_hyperparameter_optimization.py  # Script for CNN hyperparameter optimization
-├── CNN_train.py                        # Script for training CNN model
-├── README.md                           # This README file
-├── RNN_train.py                        # Script for training RNN model
-├── RNN_train_2.py                      # Alternative RNN training script
-├── css/
-│   └── markdown-style.css              # Custom CSS for Markdown rendering
-├── data/
-│   ├── mitbih_test.csv                 # Test data from MIT-BIH Arrhythmia Dataset
-│   └── mitbih_train.csv                # Train data from MIT-BIH Arrhythmia Dataset
-├── data_exploratory.py                 # Script for data exploration
-├── main_anomaly.py                     # Script for anomaly detection
-├── models/
-│   ├── CNN.py                          # CNN model definition
-│   └── RNN.py                          # RNN model definition
-├── requirements.txt                    # Required Python packages
-├── sweep/
-│   ├── cnn_sweep_config_bayes.yaml     # CNN sweep configuration (Bayesian)
-│   ├── rnn_sweep_config_bayes.yaml     # RNN sweep configuration (Bayesian)
-│   └── sweep-grid.yaml                 # General sweep configuration (grid search)
-├── test/
-│   └── test_utils.py                   # Unit tests for utility functions
-├── utils/
-│   ├── utils.py                        # Utility functions
-│   └── utils_DL.py                     # Deep learning utility functions
-└── wandb/
-    ├── main_wandb.py                   # Wandb integration script
-    └── main_wandb2.py                  # Alternative Wandb integration script
+├── README.md
+├── data_exploratory.py
+├── eval.py
+├── hyperparameter tuning
+│   ├── CNN_hyperparameter_optimization.py
+│   ├── README.md
+│   ├── RNN_hyperparameter_optimization.py
+│   └── sweep_conf
+│       ├── cnn_sweep_config_bayes.yaml
+│       ├── rnn_sweep_config_bayes.yaml
+│       └── sweep-grid.yaml
+├── main.py
+├── models
+│   ├── CNN.py
+│   ├── RNN.py
+│   ├── cnn
+│   │   └── best_cnn_model_v1.keras
+│   └── rnn
+│       └── best_RNN_model_v1.keras
+├── requirements.txt
+├── training
+│   ├── CNN_train.py
+│   └── RNN_train.py
+└── utils
+    ├── utils.py
+    └── utils_DL.py
 ```
 
 ### Description of Key Directories and Files
