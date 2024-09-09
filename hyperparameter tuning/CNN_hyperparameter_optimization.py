@@ -1,14 +1,3 @@
-""" 
-TO-DO:
-- I will move all the prints in the jupyter notebook
-- Check the best practices for the hypepramaeter optimization
-- Adding (block=False) I cannot see the plots at all
-
-Comment:
-- I can use a lower number of epoch for the hyperparameter optimization. I will use a high number of epochs for the final training.
-- Pay attention to the commas!!! 
-
-"""
 import matplotlib.pyplot as plt
 import numpy as np
 #from seaborn import countplot
@@ -111,6 +100,7 @@ plot_history(history, metric='accuracy')
 
 """Command line 
 wandb sweep config.yaml
+
 Since it is inside a folder wandb sweep hyperparameter tuning/sweep_conf/sweep-bayes.yaml
 wandb agent neuroeng/single-ECG-classification/c0bmfji5 --count 4
 """
