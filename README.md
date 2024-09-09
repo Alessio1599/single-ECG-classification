@@ -8,7 +8,10 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
   - [Table of contents](#table-of-contents)
   - [Directory structure](#directory-structure)
   - [Dataset](#dataset)
+  - [Installation](#installation)
   - [Models](#models)
+  - [Hyperparameter Tuning](#hyperparameter-tuning)
+    - [Documentation](#documentation)
 - [Links](#links)
   - [References](#references)
 
@@ -53,8 +56,39 @@ single-ECG-Classification/
 - 3: "Fusion Beats",
 - 4: "Unclassifiable Beats"
 
+## Installation
+
+To set up the environment, install the required dependencies using:
+
+```sh
+pip install -r requirements.txt
+```
+
 ## Models
 
+## Hyperparameter Tuning
+
+To optimize the hyperparameters for the models, follow these steps:
+
+1. **Setup Sweeps Configuration:**
+   - Edit the sweep configuration files located in `hyperparameter tuning/sweep_conf/`.
+   - Use the following configuration files for the respective models:
+     - CNN: `cnn_sweep_config_bayes.yaml`
+     - RNN: `rnn_sweep_config_bayes.yaml`
+
+2. **Run Sweeps:**
+   - Execute the sweep runs using the following scripts:
+     - For CNN: `python hyperparameter tuning/CNN_hyperparameter_optimization.py`
+     - For RNN: `python hyperparameter tuning/RNN_hyperparameter_optimization.py`
+   - Perform at least 40-50 runs for each model to ensure a thorough search of the hyperparameter space.
+
+3. **Analyze Results:**
+   - Use the visualization tools provided in the `wandb` directory to analyze the results of the sweeps.
+   - Refer to the `main_wandb.py` and `main_wandb2.py` scripts for generating visualizations and reports.
+
+
+### Documentation
+Refer to the `docs` directory for detailed documentation, including the project proposal and final presentation.
 
 # Links
 - [Kaggle repository](https://www.kaggle.com/code/alessio1999/single-ecg-classification)
