@@ -12,7 +12,6 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
   - [Installation](#installation)
   - [Models](#models)
   - [Hyperparameter Tuning](#hyperparameter-tuning)
-  - [Documentation](#documentation)
   - [Links](#links)
   - [References](#references)
 
@@ -96,10 +95,6 @@ To optimize the hyperparameters for the models, follow these steps:
      - For CNN: `python hyperparameter tuning/CNN_hyperparameter_optimization.py`
      - For RNN: `python hyperparameter tuning/RNN_hyperparameter_optimization.py`
    - Perform at least 40-50 runs for each model to ensure a thorough search of the hyperparameter space.
-
-
-## Documentation
-Refer to the `docs` directory for detailed documentation, including the project proposal and final presentation.
 
 ## Links
 - [Kaggle repository](https://www.kaggle.com/code/alessio1999/single-ecg-classification)
