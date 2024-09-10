@@ -97,10 +97,6 @@ To optimize the hyperparameters for the models, follow these steps:
      - For RNN: `python hyperparameter tuning/RNN_hyperparameter_optimization.py`
    - Perform at least 40-50 runs for each model to ensure a thorough search of the hyperparameter space.
 
-3. **Analyze Results:**
-   - Use the visualization tools provided in the `wandb` directory to analyze the results of the sweeps.
-   - Refer to the `main_wandb.py` and `main_wandb2.py` scripts for generating visualizations and reports.
-
 
 ## Documentation
 Refer to the `docs` directory for detailed documentation, including the project proposal and final presentation.
