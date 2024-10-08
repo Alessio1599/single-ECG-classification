@@ -7,7 +7,6 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
 - [ECG Classification](#ecg-classification)
   - [Table of contents](#table-of-contents)
   - [Project structure](#project-structure)
-    - [Description of Key Directories and Files](#description-of-key-directories-and-files)
   - [Dataset](#dataset)
   - [Installation](#installation)
   - [Models](#models)
@@ -48,21 +47,6 @@ single-ECG-Classification/
 │       └── utils_DL.py
 └── requirements.txt
 ```
-
-### Description of Key Directories and Files
-- hyperparameter tuning/: Includes scripts and configuration files for hyperparameter optimization:
-  - CNN_hyperparameter_optimization.py and RNN_hyperparameter_optimization.py for running the hyperparameter optimization.
-  - sweep_conf/: Contains YAML configuration files for defining sweep parameters. 
-    - cnn_sweep_config_bayes.yaml and rnn_sweep_config_bayes.yaml for CNN and RNN respectively.
-    - sweep-grid.yaml for grid search configurations.
-- models/: Contains model definitions and saved models:
-  - CNN.py and RNN.py: Scripts defining the CNN and RNN architectures.
-    - cnn/ and rnn/: Directories containing the trained model files.
-    - best_cnn_model_v1.keras and best_RNN_model_v1.keras are the saved models for CNN and RNN respectively.
-- training/: Scripts used for training the models:
-  - CNN_train.py and RNN_train.py for training CNN and RNN models respectively.
-- utils/: Utility scripts used throughout the project:
-  - utils.py and utils_DL.py: Contain helper functions and utilities for data processing and model training.
 
 ## Dataset 
 [The MIT-BIH Arrhythmia Dataset](https://www.physionet.org/physiobank/database/mitdb/) is used for training and testing the models. It includes the following classes:

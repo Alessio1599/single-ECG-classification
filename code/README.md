@@ -42,4 +42,11 @@
     - **cnn_sweep_config_bayes.yaml**: Bayesian sweep configuration for CNN.
     - **rnn_sweep_config_bayes.yaml**: Bayesian sweep configuration for RNN.
     - **sweep-grid.yaml**: Grid search configuration for hyperparameter tuning.
-- utils/: Utility scripts used throughout the project: utils.py and utils_DL.py: Contain helper functions and utilities for data processing and model training.
+- models/: Contains model definitions and saved models:
+  - CNN.py and RNN.py: Scripts defining the CNN and RNN architectures.
+    - cnn/ and rnn/: Directories containing the trained model files.
+    - best_cnn_model_v1.keras and best_RNN_model_v1.keras are the saved models for CNN and RNN respectively.
+- training/: Scripts used for training the models:
+  - CNN_train.py and RNN_train.py for training CNN and RNN models respectively.
+- utils/: Utility scripts used throughout the project: 
+  - utils.py and utils_DL.py: Contain helper functions and utilities for data processing and model training.
