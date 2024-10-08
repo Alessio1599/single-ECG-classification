@@ -30,7 +30,12 @@ def load_data():
         Mapping from class indices to class names
     """
     
-    base_dir = os.path.dirname(os.path.dirname(__file__))
+    # os.path.dirname(__file__) -> '/Users/alessioguarachi/Desktop/single-ECG-classification/code/utils'
+    # os.path.dirname(os.path.dirname(__file__)) -> '/Users/alessioguarachi/Desktop/single-ECG-classification/code'
+    # os.path.dirname(os.path.dirname(os.path.dirname(__file__))) -> '/Users/alessioguarachi/Desktop/single-ECG-classification'
+    
+    base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
+
     data_dir = os.path.join(base_dir, 'data')
 
     train_df = pd.read_csv(os.path.join(data_dir, 'mitbih_train.csv'), header=None)

@@ -1,6 +1,3 @@
-""" 
-Informati su come di solito è strutturato un train.py e eval.py
-"""
 import numpy as np
 import tensorflow as tf
 from tensorflow.keras.metrics import Recall, Precision, AUC
