@@ -27,3 +27,4 @@
     - **cnn_sweep_config_bayes.yaml**: Bayesian sweep configuration for CNN.
     - **rnn_sweep_config_bayes.yaml**: Bayesian sweep configuration for RNN.
     - **sweep-grid.yaml**: Grid search configuration for hyperparameter tuning.
+- utils/: Utility scripts used throughout the project: utils.py and utils_DL.py: Contain helper functions and utilities for data processing and model training.
