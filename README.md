@@ -58,6 +58,11 @@ single-ECG-Classification/
 
 ## Installation
 
+Clone the repository
+```sh
+git clone git@github.com:awni/ecg.git
+```
+
 To set up the environment, install the required dependencies using:
 
 ```sh
@@ -71,15 +76,15 @@ pip install -r requirements.txt
 To optimize the hyperparameters for the models, follow these steps:
 
 1. **Setup Sweeps Configuration:**
-   - Edit the sweep configuration files located in `hyperparameter tuning/sweep_conf/`.
+   - Edit the sweep configuration files located in `code/hyperparameter tuning/sweep_conf/`.
    - Use the following configuration files for the respective models:
      - CNN: `cnn_sweep_config_bayes.yaml`
      - RNN: `rnn_sweep_config_bayes.yaml`
 
 2. **Run Sweeps:**
    - Execute the sweep runs using the following scripts:
-     - For CNN: `python hyperparameter tuning/CNN_hyperparameter_optimization.py`
-     - For RNN: `python hyperparameter tuning/RNN_hyperparameter_optimization.py`
+     - For CNN: `python code/hyperparameter tuning/CNN_hyperparameter_optimization.py`
+     - For RNN: `python code/hyperparameter tuning/RNN_hyperparameter_optimization.py`
    - Perform at least 40-50 runs for each model to ensure a thorough search of the hyperparameter space.
 
 ## Links
