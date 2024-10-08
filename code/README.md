@@ -2,9 +2,10 @@
 ## Folder structure
 ```
 ├── code
+│   ├── README.md
 │   ├── data_exploratory.py
 │   ├── eval.py
-│   ├── hyperparameter_tuning
+│   ├── hyperparameter tuning
 │   │   ├── CNN_hyperparameter_optimization.py
 │   │   ├── README.md
 │   │   ├── RNN_hyperparameter_optimization.py
@@ -12,6 +13,20 @@
 │   │       ├── cnn_sweep_config_bayes.yaml
 │   │       ├── rnn_sweep_config_bayes.yaml
 │   │       └── sweep-grid.yaml
+│   ├── main.py
+│   ├── models
+│   │   ├── CNN.py
+│   │   ├── RNN.py
+│   │   ├── cnn
+│   │   │   └── best_cnn_model_v1.keras
+│   │   └── rnn
+│   │       └── best_RNN_model_v1.keras
+│   ├── training
+│   │   ├── CNN_train.py
+│   │   └── RNN_train.py
+│   └── utils
+│       ├── utils.py
+│       └── utils_DL.py
 ```
 
 
