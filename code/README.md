@@ -30,23 +30,68 @@
 ```
 
 
+
 ## Contents
 
-- **data_exploratory.py**: Script for initial data exploration and visualization.
-- **eval.py**: Script for evaluating the performance of trained models.
-- **hyperparameter_tuning**: Directory containing scripts and configuration files for hyperparameter tuning.
-  - **CNN_hyperparameter_optimization.py**: Script for optimizing CNN hyperparameters.
-  - **RNN_hyperparameter_optimization.py**: Script for optimizing RNN hyperparameters.
-  - **README.md**: Detailed description of hyperparameter tuning procedures.
-  - **sweep_conf**: Configuration files for hyperparameter sweeps.
-    - **cnn_sweep_config_bayes.yaml**: Bayesian sweep configuration for CNN.
-    - **rnn_sweep_config_bayes.yaml**: Bayesian sweep configuration for RNN.
-    - **sweep-grid.yaml**: Grid search configuration for hyperparameter tuning.
-- models/: Contains model definitions and saved models:
-  - CNN.py and RNN.py: Scripts defining the CNN and RNN architectures.
-    - cnn/ and rnn/: Directories containing the trained model files.
-    - best_cnn_model_v1.keras and best_RNN_model_v1.keras are the saved models for CNN and RNN respectively.
-- training/: Scripts used for training the models:
-  - CNN_train.py and RNN_train.py for training CNN and RNN models respectively.
-- utils/: Utility scripts used throughout the project: 
-  - utils.py and utils_DL.py: Contain helper functions and utilities for data processing and model training.
+- **`data_exploratory.py`**:  
+  Script for initial data exploration and visualization. It helps in understanding the dataset's structure and characteristics.
+
+- **`eval.py`**:  
+  Script for evaluating the performance of trained models. This includes metrics computation and visualization of results.
+
+- **`hyperparameter_tuning`**:  
+  Directory containing scripts and configuration files for optimizing model hyperparameters.
+  - **`CNN_hyperparameter_optimization.py`**:  
+    Script dedicated to optimizing hyperparameters for CNN architectures.
+  - **`RNN_hyperparameter_optimization.py`**:  
+    Script dedicated to optimizing hyperparameters for RNN architectures.
+  - **`README.md`**:  
+    Detailed description of the hyperparameter tuning procedures and methodologies used.
+  - **`sweep_conf`**:  
+    Configuration files for hyperparameter sweeps.
+    - **`cnn_sweep_config_bayes.yaml`**:  
+      Bayesian configuration file for sweeping CNN hyperparameters.
+    - **`rnn_sweep_config_bayes.yaml`**:  
+      Bayesian configuration file for sweeping RNN hyperparameters.
+    - **`sweep-grid.yaml`**:  
+      Grid search configuration for hyperparameter tuning across different models.
+
+- **`models/`**:  
+  Contains model definitions and saved models.
+  - **`CNN.py`**:  
+    Script defining the architecture of the CNN.
+  - **`RNN.py`**:  
+    Script defining the architecture of the RNN.
+  - **`cnn/`**:  
+    Directory containing the trained CNN model file.
+    - **`best_cnn_model_v1.keras`**:  
+      Saved model file for the best performing CNN version.
+  - **`rnn/`**:  
+    Directory containing the trained RNN model file.
+    - **`best_RNN_model_v1.keras`**:  
+      Saved model file for the best performing RNN version.
+
+- **`training/`**:  
+  Scripts used for training the models.
+  - **`CNN_train.py`**:  
+    Script for training the CNN model.
+  - **`RNN_train.py`**:  
+    Script for training the RNN model.
+
+- **`utils/`**:  
+  Utility scripts used throughout the project. These contain helper functions and utilities for data processing and model training.
+  - **`utils.py`**:  
+    General utility functions for data handling and preprocessing.
+  - **`utils_DL.py`**:  
+    Functions specifically designed for deep learning tasks, including data augmentation and preprocessing methods.
+
+## How to Use
+
+- Start by running `data_exploratory.py` to understand your dataset.
+- Use `CNN_train.py` or `RNN_train.py` to train your models.
+- Optimize hyperparameters using scripts in the `hyperparameter_tuning` folder.
+- Evaluate the trained models with `eval.py`.
+
+## Requirements
+
+Ensure that all required libraries and dependencies are installed as specified in the main project README (if available).
