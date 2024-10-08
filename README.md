@@ -21,6 +21,7 @@ The project directory is organized as follows:
 single-ECG-Classification/
 ├── README.md
 ├── code
+│   ├── README.md
 │   ├── data_exploratory.py
 │   ├── eval.py
 │   ├── hyperparameter tuning
@@ -39,13 +40,13 @@ single-ECG-Classification/
 │   │   │   └── best_cnn_model_v1.keras
 │   │   └── rnn
 │   │       └── best_RNN_model_v1.keras
-│   └── training
-│       ├── CNN_train.py
-│       └── RNN_train.py
-├── requirements.txt
-└── utils
-    ├── utils.py
-    └── utils_DL.py
+│   ├── training
+│   │   ├── CNN_train.py
+│   │   └── RNN_train.py
+│   └── utils
+│       ├── utils.py
+│       └── utils_DL.py
+└── requirements.txt
 ```
 
 ### Description of Key Directories and Files
