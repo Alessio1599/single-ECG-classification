@@ -60,7 +60,7 @@ single-ECG-Classification/
 
 Clone the repository
 ```sh
-git clone git@github.com:awni/ecg.git
+git clone git@github.com:alessio1599/single-ECG-classification.git
 ```
 
 To set up the environment, install the required dependencies using:
