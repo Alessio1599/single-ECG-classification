@@ -29,7 +29,8 @@
 │       └── utils_DL.py
 ```
 
-
+## Changes that I made
+- At the beginnning I had a utils folder, now I have all the utility functions inside util.py
 
 ## Contents
 
