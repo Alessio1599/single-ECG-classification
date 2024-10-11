@@ -16,8 +16,8 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 import tensorflow as tf
 
-from utils.utils import load_data, show_confusion_matrix, plot_roc_multiclass
-from utils.utils import load_data
+from code.utils import load_data, show_confusion_matrix, plot_roc_multiclass
+from code.utils import load_data
 from tensorflow.keras.models import load_model
 
 x_train, y_train, x_test, y_test, class_labels, class_names = load_data()

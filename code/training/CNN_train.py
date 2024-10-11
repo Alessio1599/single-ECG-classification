@@ -1,9 +1,16 @@
 import numpy as np
 import tensorflow as tf
-from models.CNN import build_CNN
-from utils.utils import load_data, class_weights, plot_history
 
-x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
+import sys
+import os
+code_dir = os.path.dirname(os.path.dirname(__file__))
+sys.path.append(code_dir)
+
+from util import load_data, class_weights, plot_history
+from models.CNN import build_CNN
+
+base_dir = os.path.dirname(code_dir)
+x_train, y_train, x_test, y_test, class_labels, class_names = load_data(base_dir)
 
 # Get the class weights
 class_weights_dict = class_weights(y_train)
@@ -43,8 +50,11 @@ model.compile(
     metrics= ['accuracy']
 )
 
+# Define the path to save the model
+model_save_path = os.path.join(code_dir, 'models/cnn/best_cnn_model_v1.keras')
+
 checkpoint = tf.keras.callbacks.ModelCheckpoint(
-    'models/cnn/best_cnn_model_v1.keras',
+    model_save_path,
     monitor='val_accuracy',
     save_best_only=True
 )

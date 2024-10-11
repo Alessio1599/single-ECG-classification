@@ -3,7 +3,7 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
-from utils.utils import load_data, preprocess_for_hyperparameter, plot_interactive_idx
+from code.utils import load_data, preprocess_for_hyperparameter, plot_interactive_idx
 
 x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
 

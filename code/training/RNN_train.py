@@ -1,7 +1,7 @@
 import numpy as np
 import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
-from utils.utils import load_data, class_weights, plot_history
+from code.utils import load_data, class_weights, plot_history
 from models.RNN import build_RNN, build_deep_rnn
 
 x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
