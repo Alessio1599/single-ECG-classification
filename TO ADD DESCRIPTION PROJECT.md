@@ -3,8 +3,10 @@
 
 - When I import the jupyter notebook on kaggle, the space between the lines of code
 
-## CODE
+## CODE Kaggle
 !pip install
+
+path='/kaggle/input/'
 
 
 ### Useful modules import
