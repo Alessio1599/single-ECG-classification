@@ -96,3 +96,11 @@
 ## Requirements
 
 Ensure that all required libraries and dependencies are installed as specified in the main project README (if available).
+
+
+## Save the results
+I can save the plot results using `plt.savefig`:
+```python
+plt.savefig(os.path.join(results_dir, f'{model_name}_confusion_matrix.png'))
+```
+It must preceed the `plt.show()`
