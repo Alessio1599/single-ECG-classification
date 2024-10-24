@@ -13,7 +13,6 @@ wandb/
 test/
 todo.md
 notes/
-img/
 
 # Byte-compiled
 __pycache__/

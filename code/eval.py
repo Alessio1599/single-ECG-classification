@@ -16,14 +16,22 @@ from sklearn.metrics import confusion_matrix
 from sklearn.metrics import classification_report
 import tensorflow as tf
 
-from code.utils import load_data, show_confusion_matrix, plot_roc_multiclass
-from code.utils import load_data
+import sys
+import os
+code_dir = os.path.dirname(__file__)
+sys.path.append(code_dir)
+
+from util import load_data, show_confusion_matrix, plot_roc_multiclass
+from util import load_data
 from tensorflow.keras.models import load_model
 
-x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
+#x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
 
-cnn_model = load_model('models/cnn/best_cnn_model_v1.keras') #CNN_model = load_model('models/CNN_model.keras')
-rnn_model = load_model('models/rnn/best_rnn_model_v1.keras')
+base_dir = os.path.dirname(code_dir)
+x_train, y_train, x_test, y_test, class_labels, class_names = load_data(base_dir)
+
+cnn_model = load_model(code_dir + '/models/cnn/best_cnn_model_v1.keras') #CNN_model = load_model('models/CNN_model.keras')
+#rnn_model = load_model(code_dir + '/models/rnn/best_rnn_model_v1.keras')
 
 def evaluate_model(model, x_test, y_test, class_names):
     """
@@ -63,7 +71,7 @@ def evaluate_model(model, x_test, y_test, class_names):
     plot_roc_multiclass("Model ROC", y_test, y_test_conf_pred_probs, num_classes)
 
 evaluate_model(cnn_model, x_test, y_test, class_names)
-evaluate_model(rnn_model, x_test, y_test, class_names) # I have a problem with the RNN model
+#evaluate_model(rnn_model, x_test, y_test, class_names) # I have a problem with the RNN model
 
 
 
@@ -162,10 +170,10 @@ def classification_report_heatmap(report_df):
 
 # Generate metrics report
 cnn_report_df, cnn_macro_avg = generate_metrics_report(cnn_model, x_test, y_test, class_names)
-rnn_report_df, rnn_macro_avg = generate_metrics_report(rnn_model, x_test, y_test, class_names)
+#rnn_report_df, rnn_macro_avg = generate_metrics_report(rnn_model, x_test, y_test, class_names)
 
 classification_report_heatmap(cnn_report_df)
-classification_report_heatmap(rnn_report_df)
+#classification_report_heatmap(rnn_report_df)
 
 # Convert macro average metrics to DataFrame for plotting
 metrics_df = pd.DataFrame({

@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow import keras
 import wandb
 
-from code.utils import load_data, preprocess_for_hyperparameter, class_weights ,plot_history
+from util import load_data, preprocess_for_hyperparameter, class_weights ,plot_history
 #from utils.utils_DL import train_model, evaluate_model
 from models.CNN import build_CNN
 
