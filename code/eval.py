@@ -28,12 +28,18 @@ from tensorflow.keras.models import load_model
 #x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
 
 base_dir = os.path.dirname(code_dir)
+
+# Define directory to save results
+results_dir = os.path.join(base_dir, 'results')
+if not os.path.exists(results_dir):
+    os.makedirs(results_dir)
+
 x_train, y_train, x_test, y_test, class_labels, class_names = load_data(base_dir)
 
 cnn_model = load_model(code_dir + '/models/cnn/best_cnn_model_v1.keras') #CNN_model = load_model('models/CNN_model.keras')
 #rnn_model = load_model(code_dir + '/models/rnn/best_rnn_model_v1.keras')
 
-def evaluate_model(model, x_test, y_test, class_names):
+def evaluate_model(model, x_test, y_test, class_names, model_name, results_dir):
     """
     Evaluates a model by generating and displaying:
     - Confusion matrix using the provided `show_confusion_matrix` function.
@@ -70,7 +76,7 @@ def evaluate_model(model, x_test, y_test, class_names):
     num_classes = len(class_names)
     plot_roc_multiclass("Model ROC", y_test, y_test_conf_pred_probs, num_classes)
 
-evaluate_model(cnn_model, x_test, y_test, class_names)
+evaluate_model(cnn_model, x_test, y_test, class_names, 'cnn', results_dir)
 #evaluate_model(rnn_model, x_test, y_test, class_names) # I have a problem with the RNN model
 
 

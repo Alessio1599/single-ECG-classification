@@ -265,7 +265,7 @@ def evaluate_model(x_test, y_test, model, class_names):
     conf_matrix = confusion_matrix(y_test, y_test_pred, normalize='true')
     show_confusion_matrix(conf_matrix, class_names)
     
-def show_confusion_matrix(conf_matrix, class_names, figsize=(10,10)):
+def show_confusion_matrix(conf_matrix, class_names, figsize=(10,10), results_dir='results', model_name='model'):
     """
     Plots the confusion matrix.
 
@@ -277,6 +277,10 @@ def show_confusion_matrix(conf_matrix, class_names, figsize=(10,10)):
         Class names
     figsize : tuple, optional
         Size of the figure
+    results_dir : str, optional
+        Directory to save the plot
+    model_name : str, optional
+        Name of the model for the filename
     """
     fig, ax = plt.subplots(figsize=figsize)
     img = ax.matshow(conf_matrix)
@@ -291,6 +295,8 @@ def show_confusion_matrix(conf_matrix, class_names, figsize=(10,10)):
         for j in range(len(class_names)):
             text = ax.text(j, i, '{0:.1%}'.format(conf_matrix[i, j]),
                            ha='center', va='center', color='w')
+    # Save the figure
+    plt.savefig(os.path.join(results_dir, f'{model_name}_confusion_matrix.png'))
     plt.show() #block=False
 
 
