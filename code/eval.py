@@ -70,7 +70,7 @@ def evaluate_model(model, x_test, y_test, class_names, model_name, results_dir):
 
     # Confusion Matrix
     conf_matrix = confusion_matrix(y_test, y_test_pred, normalize='true')
-    show_confusion_matrix(conf_matrix, class_names)
+    show_confusion_matrix(conf_matrix, class_names, results_dir, model_name)
 
     # ROC Curve for multiclass classification
     num_classes = len(class_names)

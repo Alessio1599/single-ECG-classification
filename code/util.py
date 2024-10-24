@@ -265,7 +265,7 @@ def evaluate_model(x_test, y_test, model, class_names):
     conf_matrix = confusion_matrix(y_test, y_test_pred, normalize='true')
     show_confusion_matrix(conf_matrix, class_names)
     
-def show_confusion_matrix(conf_matrix, class_names, figsize=(10,10), results_dir='results', model_name='model'):
+def show_confusion_matrix(conf_matrix, class_names, results_dir='results', model_name='model'):
     """
     Plots the confusion matrix.
 
@@ -282,6 +282,7 @@ def show_confusion_matrix(conf_matrix, class_names, figsize=(10,10), results_dir
     model_name : str, optional
         Name of the model for the filename
     """
+    figsize=(10,10)
     fig, ax = plt.subplots(figsize=figsize)
     img = ax.matshow(conf_matrix)
     tick_marks = np.arange(len(class_names))
