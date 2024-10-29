@@ -18,16 +18,13 @@ import tensorflow as tf
 
 import sys
 import os
-code_dir = os.path.dirname(__file__)
+code_dir = os.path.dirname(__file__) # code folder directory
 sys.path.append(code_dir)
 
 from util import load_data, show_confusion_matrix, plot_roc_multiclass
-from util import load_data
 from tensorflow.keras.models import load_model
 
-#x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
-
-base_dir = os.path.dirname(code_dir)
+base_dir = os.path.dirname(code_dir) # base directory for the project
 
 # Define directory to save results
 results_dir = os.path.join(base_dir, 'results')
@@ -37,7 +34,7 @@ if not os.path.exists(results_dir):
 x_train, y_train, x_test, y_test, class_labels, class_names = load_data(base_dir)
 
 cnn_model = load_model(code_dir + '/models/cnn/best_cnn_model_v1.keras') #CNN_model = load_model('models/CNN_model.keras')
-#rnn_model = load_model(code_dir + '/models/rnn/best_rnn_model_v1.keras')
+rnn_model = load_model(code_dir + '/models/rnn/best_rnn_model_v1.keras')
 
 def evaluate_model(model, x_test, y_test, class_names, model_name, results_dir):
     """
@@ -130,18 +127,21 @@ def generate_metrics_report(model, x_test, y_test, class_names):
         y_test, 
         y_test_pred,
         labels=list(range(len(class_names))),
-        target_names=class_names,
+        target_names=['Normal Beats',"Supraventricular Ectopy Beats","Ventricular Ectopy Beats","Fusion Beats","Unclassifiable Beats"],
         output_dict=True
     )
     
     # Convert classification report to DataFrame
-    report_df = pd.DataFrame(report).transpose()
+    report_df = pd.DataFrame(report).iloc[:-1, :].T # .iloc[:-1, :] to exclude support
     
-    # Calculate macro average metrics
+    # Save the DataFrame to a CSV file
+    report_df.to_csv(os.path.join(results_dir, 'CNN_classification_report.csv'), index=True)
+    
+    # Extract macro average metrics
     macro_average_metrics = {
-        'Precision': report_df.loc['macro avg', 'precision'],
-        'Recall': report_df.loc['macro avg', 'recall'],
-        'F1-Score': report_df.loc['macro avg', 'f1-score'] # report_df.loc['macro avg', 'f1-score'] To access to the macro avg of the f1-score column
+        'Precision': report['macro avg']['precision'],
+        'Recall': report['macro avg']['recall'],
+        'F1-Score': report['macro avg']['f1-score']
     }
     
     return report_df, macro_average_metrics
@@ -168,7 +168,7 @@ def classification_report_heatmap(report_df):
         This function does not return any value. It displays the heatmap plot of the classification report.
     """
     plt.figure(figsize=(8,8))
-    report_df = report_df.iloc[:-1, :].T # .iloc[:-1, :] to exclude support
+    
     ax = sns.heatmap(report_df, annot=True, cmap='Blues')
     ax.set_yticklabels(ax.get_yticklabels(),fontsize=12, rotation=0)
     plt.title("Classification Report")
@@ -176,10 +176,16 @@ def classification_report_heatmap(report_df):
 
 # Generate metrics report
 cnn_report_df, cnn_macro_avg = generate_metrics_report(cnn_model, x_test, y_test, class_names)
-#rnn_report_df, rnn_macro_avg = generate_metrics_report(rnn_model, x_test, y_test, class_names)
+rnn_report_df, rnn_macro_avg = generate_metrics_report(rnn_model, x_test, y_test, class_names)
+
+# Import the classification report of another model
+lstm_report = pd.read_csv(os.path.join(results_dir, 'LSTM_classification_report.csv'))
+lstm_report_df = pd.DataFrame(lstm_report)
+
+
 
 classification_report_heatmap(cnn_report_df)
-#classification_report_heatmap(rnn_report_df)
+classification_report_heatmap(rnn_report_df)
 
 # Convert macro average metrics to DataFrame for plotting
 metrics_df = pd.DataFrame({
@@ -190,8 +196,58 @@ metrics_df = pd.DataFrame({
 })
 
 # Melt DataFrame to long format for easier plotting
-metrics_melted = pd.melt(metrics_df, id_vars='Model', var_name='Metrics', value_name='Score')
+metrics_melted = pd.melt(metrics_df, id_vars='Model', var_name='Metric', value_name='Score')
 
 sns.barplot(x='Metric', y='Score', hue='Model', data=metrics_melted, palette='viridis')
 plt.title('Macro Average Metrics Comparison')
+plt.show()
+
+class_names = ['Normal Beats',"Supraventricular Ectopy Beats","Ventricular Ectopy Beats","Fusion Beats","Unclassifiable Beats"]
+
+
+## Anothe implementation
+# Extract F1 scores for each class (assuming class_names contains the names of your 5 classes)
+f1_scores_cnn = cnn_report_df.loc[class_names, 'f1-score']
+f1_scores_rnn = rnn_report_df.loc[class_names, 'f1-score']
+f1_scores_lstm = lstm_report_df.loc[0:4, 'f1-score']
+
+# Create a DataFrame for plotting
+f1_scores_df = pd.DataFrame({
+    'Class': class_names,
+    'CNN': f1_scores_cnn.values,
+    'RNN': f1_scores_rnn.values,
+    'LSTM': f1_scores_lstm.values
+})
+
+# Melt DataFrame to long format for easier plotting
+f1_scores_melted = pd.melt(f1_scores_df, id_vars='Class', var_name='Model', value_name='F1-Score')
+
+# Plot the F1-score comparison for each class
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Class', y='F1-Score', hue='Model', data=f1_scores_melted, palette='viridis')
+plt.title('F1-Score Comparison for Each Class')
+plt.xticks(rotation=45)
+# Save the figure
+plt.savefig(os.path.join(results_dir, f'f1-score_comparison_models.png'))
+plt.show()
+
+# Extract F1-scores for each class for comparison
+f1_scores_cnn = cnn_report_df['f1-score'][:-3]  # Exclude 'accuracy', 'macro avg', 'weighted avg'
+f1_scores_rnn = rnn_report_df['f1-score'][:-3]  # Exclude 'accuracy', 'macro avg', 'weighted avg'
+
+# Create a DataFrame for plotting F1-scores
+f1_scores_df = pd.DataFrame({
+    'Class': class_names,
+    'CNN': f1_scores_cnn.values,
+    'RNN': f1_scores_rnn.values
+})
+
+# Melt DataFrame to long format for easier plotting
+f1_scores_melted = pd.melt(f1_scores_df, id_vars='Class', var_name='Model', value_name='f1-Score')
+
+# Plot the F1-score comparison for each class
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Class', y='f1-Score', hue='Model', data=f1_scores_melted, palette='viridis')
+plt.title('F1-Score Comparison for Each Class')
+plt.xticks(rotation=45)
 plt.show()

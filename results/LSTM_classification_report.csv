@@ -1,0 +1,9 @@
+,precision,recall,f1-score
+Normal Beats,0.98,1.00,0.99
+Supraventricular Ectopy Beats,0.90,0.63,0.74
+Ventricular Ectopy Beats,0.94,0.92,0.93
+Fusion Beats,0.82,0.74,0.78
+Unclassifiable Beats,0.99,0.97,0.98
+accuracy,0.98,0.98,0.98
+macro avg,0.93,0.85,0.88
+weighted avg,0.98,0.98,0.98
