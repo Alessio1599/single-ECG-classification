@@ -182,8 +182,6 @@ rnn_report_df, rnn_macro_avg = generate_metrics_report(rnn_model, x_test, y_test
 lstm_report = pd.read_csv(os.path.join(results_dir, 'LSTM_classification_report.csv'))
 lstm_report_df = pd.DataFrame(lstm_report)
 
-
-
 classification_report_heatmap(cnn_report_df)
 classification_report_heatmap(rnn_report_df)
 
@@ -205,7 +203,7 @@ plt.show()
 class_names = ['Normal Beats',"Supraventricular Ectopy Beats","Ventricular Ectopy Beats","Fusion Beats","Unclassifiable Beats"]
 
 
-## Anothe implementation
+
 # Extract F1 scores for each class (assuming class_names contains the names of your 5 classes)
 f1_scores_cnn = cnn_report_df.loc[class_names, 'f1-score']
 f1_scores_rnn = rnn_report_df.loc[class_names, 'f1-score']
@@ -231,6 +229,7 @@ plt.xticks(rotation=45)
 plt.savefig(os.path.join(results_dir, f'f1-score_comparison_models.png'))
 plt.show()
 
+## Another way to compare the F1-scores for each class
 # Extract F1-scores for each class for comparison
 f1_scores_cnn = cnn_report_df['f1-score'][:-3]  # Exclude 'accuracy', 'macro avg', 'weighted avg'
 f1_scores_rnn = rnn_report_df['f1-score'][:-3]  # Exclude 'accuracy', 'macro avg', 'weighted avg'

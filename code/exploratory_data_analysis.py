@@ -3,11 +3,24 @@ import seaborn as sns
 import pandas as pd
 import numpy as np
 
-from code.utils import load_data, preprocess_for_hyperparameter, plot_interactive_idx
+import sys
+import os
+code_dir = os.path.dirname(__file__)
+sys.path.append(code_dir)
+base_dir = os.path.dirname(code_dir)
 
-x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
+from util import load_data, preprocess_for_hyperparameter, plot_interactive_idx
 
-x_train, y_train, x_val, y_val, x_test, y_test = preprocess_for_hyperparameter(x_train, y_train, x_test, y_test)
+x_train, y_train, x_test, y_test, class_labels, class_names = load_data(base_dir)
+
+
+
+x_train, y_train, x_test, y_test, class_labels, class_names = load_data(base_dir)
+print(f"x_train shape: {x_train.shape}") # (87554, 187)
+print(f"y_train shape: {y_train.shape}") # (87554,)
+print(y_train) # [0. 0. 0. ... 4. 4. 4.] It is not a one-hot encoded vector
+
+#x_train, y_train, x_val, y_val, x_test, y_test = preprocess_for_hyperparameter(x_train, y_train, x_test, y_test)
 
 # Interactive exploration of the training data
 plot_interactive_idx(x_train, y_train) # the output can be seen in a jupyter notebook 
