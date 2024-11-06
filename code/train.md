@@ -10,4 +10,4 @@ In addition to that we have to define
 - loss function
 - number of epochs
 
-## I can check on Overflow, to see how they usually implement the learning sche
+## I can check on Stack Overflow, to see how they usually implement the learning rate schedule !!!
