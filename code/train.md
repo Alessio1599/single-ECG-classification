@@ -9,3 +9,5 @@ In addition to that we have to define
   - warmup of the LR
 - loss function
 - number of epochs
+
+## I can check on Overflow, to see how they usually implement the learning sche
