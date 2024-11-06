@@ -8,3 +8,4 @@ In addition to that we have to define
 - Learning rate
   - warmup of the LR
 - loss function
+- number of epochs
