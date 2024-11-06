@@ -15,4 +15,6 @@ In addition to that we have to define
 ## Problem that I had with callbacks
 ### I WAS HAVING DIFFICULTIES IN DEFINING CALLBACKS..
 
+Since I had problems with the callbacks, I've decided to use only the one LRreduce on plateau!!!!! 
+
 The issue is that the LearningRateScheduler callback resets the learning rate every epoch, which overrides the adjustments made by the ReduceLROnPlateau callback. This conflict can be resolved by carefully managing the learning rate such that the LearningRateScheduler only modifies the learning rate during the warm-up period and leaves it unchanged afterward.
