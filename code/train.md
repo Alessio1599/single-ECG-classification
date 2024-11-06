@@ -11,3 +11,6 @@ In addition to that we have to define
 - number of epochs
 
 ## I can check on Stack Overflow, to see how they usually implement the learning rate schedule !!!
+
+
+### I WAS HAVING DIFFICULTIES IN DEFINING CALLBACKS..
