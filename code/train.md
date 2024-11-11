@@ -12,7 +12,7 @@ In addition to that we have to define
 
 ## I can check on Stack Overflow, to see how they usually implement the learning rate schedule !!!
 
-## Problem that I had with callbacks
+### Problem that I had with callbacks
 ### I WAS HAVING DIFFICULTIES IN DEFINING CALLBACKS..
 
 Since I had problems with the callbacks, I've decided to use only the one LRreduce on plateau!!!!! 
