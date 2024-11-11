@@ -1,5 +1,5 @@
 ## Here I will explain better the training process
-In order to train the model we have to deine the architecture (number of layers, etc.).
+In order to train the model we have to define the architecture (number of layers, etc.).
 - particular layers to avoid overfitting
 - activation functions
 
