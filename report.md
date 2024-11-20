@@ -15,6 +15,8 @@ I've decided to use the LR scheduler since I saw in the plot of the loss over th
 - I've decided to reduce the LR when there was a plateau
 
 
+### Stride
+I cannot use a stride too high, because then the signal will be too reduced.
 
 # Project specifications
 
