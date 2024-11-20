@@ -11,8 +11,6 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
   - [Installation](#installation)
   - [Models](#models)
   - [Hyperparameter Tuning](#hyperparameter-tuning)
-  - [Links](#links)
-  - [References](#references)
 
 ## Project structure
 The project directory is organized as follows:
@@ -87,10 +85,4 @@ To optimize the hyperparameters for the models, follow these steps:
      - For RNN: `python code/hyperparameter tuning/RNN_hyperparameter_optimization.py`
    - Perform at least 40-50 runs for each model to ensure a thorough search of the hyperparameter space.
 
-## Links
-- [Kaggle repository](https://www.kaggle.com/code/alessio1999/single-ecg-classification)
-  
-## References
-1. [Classification on imbalanced data, Tensorflow](https://www.tensorflow.org/tutorials/structured_data/imbalanced_data#class_weights)
-2. [Demystifying Neural Networks: Anomaly Detection with AutoEncoder](https://medium.com/@weidagang/demystifying-anomaly-detection-with-autoencoder-neural-networks-1e235840d879)
-3. [Tune hyperparameter using sweeps](https://docs.wandb.ai/guides/sweeps)
+
