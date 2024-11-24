@@ -28,6 +28,9 @@ Makefile
 code/pytorch/
 code/report.md
 
+# Under development
+code/transfer_learning/
+
 # Jupyter Notebook
 exploratory_data_analysis.ipynb
 basic.ipynb
