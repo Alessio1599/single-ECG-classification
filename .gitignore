@@ -19,9 +19,7 @@ docs/
 # Project Management
 project_management/
 
-# Obsidian Vault 
-.obsidian/
-
+# Folders
 - ECG classification/
 references/
 
