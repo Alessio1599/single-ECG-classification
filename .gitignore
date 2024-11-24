@@ -1,33 +1,34 @@
-- ECG classification/
-archive/
-css/
-comments.md
-data/
-.DS_Store
-docs/
-Makefile
-runs/
-other_codes/
-main_anomaly.py
-RNN_train_timeseriesgenerator.py
-wandb/
-test/
-todo.md
-notes/
+# Operating System files
+.DS_Store            # macOS system file
 
-
-literature/
-
-code/pytorch/
-code/report.md
-
-# Byte-compiled
-__pycache__/
+# Python bytecode
+__pycache__/         # Python bytecode
 
 # VScode project settings
 .vscode/
 
+# Archives
+archive/
+
+# Dataset files
+data/
+
+# Documentation
+docs/
+
+# Project Management
+project_management/
+
+# Obsidian Vault 
 .obsidian/
+
+- ECG classification/
+
+
+Makefile
+
+code/pytorch/
+code/report.md
 
 # Jupyter Notebook
 exploratory_data_analysis.ipynb
