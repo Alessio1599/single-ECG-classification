@@ -9,8 +9,6 @@ Arrhythmia is a unique type of heart disease which produces inefficient and irre
   - [Project structure](#project-structure)
   - [Dataset](#dataset)
   - [Installation](#installation)
-  - [Models](#models)
-  - [Hyperparameter Tuning](#hyperparameter-tuning)
 
 ## Project structure
 The project directory is organized as follows:
@@ -66,23 +64,3 @@ To set up the environment, install the required dependencies using:
 ```sh
 pip install -r requirements.txt
 ```
-
-## Models
-
-## Hyperparameter Tuning
-
-To optimize the hyperparameters for the models, follow these steps:
-
-1. **Setup Sweeps Configuration:**
-   - Edit the sweep configuration files located in `code/hyperparameter tuning/sweep_conf/`.
-   - Use the following configuration files for the respective models:
-     - CNN: `cnn_sweep_config_bayes.yaml`
-     - RNN: `rnn_sweep_config_bayes.yaml`
-
-2. **Run Sweeps:**
-   - Execute the sweep runs using the following scripts:
-     - For CNN: `python code/hyperparameter tuning/CNN_hyperparameter_optimization.py`
-     - For RNN: `python code/hyperparameter tuning/RNN_hyperparameter_optimization.py`
-   - Perform at least 40-50 runs for each model to ensure a thorough search of the hyperparameter space.
-
-
