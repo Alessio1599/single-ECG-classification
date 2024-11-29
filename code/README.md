@@ -29,10 +29,7 @@
 │       └── utils_DL.py
 ```
 
-> In zero.py I reimplemented the things without using functions!!
 
-## Changes that I made
-- At the beginnning I had a utils folder, now I have all the utility functions inside util.py
 
 ## Contents
 
