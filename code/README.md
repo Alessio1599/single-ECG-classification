@@ -24,11 +24,8 @@
 │   ├── training
 │   │   ├── CNN_train.py
 │   │   └── RNN_train.py
-│   └── utils
-│       ├── utils.py
-│       └── utils_DL.py
+│   └── util.py
 ```
-
 
 
 ## Contents
