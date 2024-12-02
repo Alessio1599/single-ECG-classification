@@ -1,5 +1,11 @@
 I already written few things on a paper, I should write here the things that I will say
+- I should write down the most important things that I have to say
+- I have to predict the possible questions that he can ask
 
+
+
+### Ideas
+---
 - I can use histograms to show the results obtained using different models
   
 ![[Screenshot 2024-08-08 at 14.15.47.png|600]]
