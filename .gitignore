@@ -16,27 +16,13 @@ data/
 # Documentation
 docs/
 
-# Project Management
-project_management/
-
-# Folders
-- ECG classification/
-references/
 
 Makefile
 
-code/pytorch/
-code/report.md
-
-# Under development
-code/transfer_learning/
-
 # Jupyter Notebook
-
+notebooks/
 
 # LaTeX
 latex/
 report/
 
-## Other folders
-exam/
