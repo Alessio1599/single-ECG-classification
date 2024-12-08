@@ -15,33 +15,67 @@ The project directory is organized as follows:
 ```
 single-ECG-Classification/
 ├── README.md
-├── code
+├── configs
 │   ├── README.md
-│   ├── data_exploratory.py
-│   ├── eval.py
-│   ├── hyperparameter tuning
-│   │   ├── CNN_hyperparameter_optimization.py
+│   ├── config_cnn.yaml
+│   ├── sweep-grid.yaml
+│   ├── sweep_cnn_config_bayes.yaml
+│   └── sweep_rnn_config_bayes.yaml
+├── img
+│   └── class_distribution_train.png
+├── models
+│   ├── CNN.py
+│   ├── RNN.py
+│   ├── __pycache__
+│   │   ├── CNN.cpython-311.pyc
+│   │   └── RNN.cpython-311.pyc
+│   ├── cnn
+│   │   ├── best_cnn_model_v1.keras
+│   │   ├── best_cnn_model_v1_script.keras
+│   │   ├── cnn_best_model.keras
+│   │   ├── cnn_model.keras
+│   │   └── model.keras
+│   └── rnn
+│       └── best_RNN_model_v1.keras
+├── requirements.txt
+├── results
+│   ├── LSTM_classification_report.csv
+│   ├── README.md
+│   ├── cnn
+│   │   ├── cnn_classification_report.csv
+│   │   ├── cnn_classification_report.png
+│   │   ├── cnn_confusion_matrix.png
+│   │   └── cnn_confusion_matrix_barplot.png
+│   ├── comparison
+│   │   └── f1-score_comparison_models.png
+│   ├── hyperparameter_tuning
+│   │   ├── W&B Chart 07_08_2024, 20_25_52.png
+│   │   ├── W&B Chart 29_10_2024, 12_52_19_.png
+│   │   └── cnn
+│   │       └── W&B Chart 08_12_2024, 23_15_24.png
+│   ├── improved_rnn
 │   │   ├── README.md
-│   │   ├── RNN_hyperparameter_optimization.py
-│   │   └── sweep_conf
-│   │       ├── cnn_sweep_config_bayes.yaml
-│   │       ├── rnn_sweep_config_bayes.yaml
-│   │       └── sweep-grid.yaml
-│   ├── main.py
-│   ├── models
-│   │   ├── CNN.py
-│   │   ├── RNN.py
-│   │   ├── cnn
-│   │   │   └── best_cnn_model_v1.keras
-│   │   └── rnn
-│   │       └── best_RNN_model_v1.keras
-│   ├── training
-│   │   ├── CNN_train.py
-│   │   └── RNN_train.py
-│   └── utils
-│       ├── utils.py
-│       └── utils_DL.py
-└── requirements.txt
+│   │   ├── rnn_classification_report.csv
+│   │   ├── rnn_classification_report.png
+│   │   └── rnn_confusion_matrix.png
+│   ├── reports
+│   └── rnn
+│       ├── rnn_classification_report.csv
+│       ├── rnn_classification_report.png
+│       └── rnn_confusion_matrix.png
+└── scripts
+    ├── README.md
+    ├── __pycache__
+    │   └── util.cpython-311.pyc
+    ├── data_preprocessing.py
+    ├── eval.py
+    ├── hyperparameter tuning
+    │   ├── CNN_hyperparameter_optimization.py
+    │   ├── README.md
+    │   └── RNN_hyperparameter_optimization.py
+    ├── train_cnn.py
+    ├── train_rnn.py
+    └── util.py
 ```
 
 ## Dataset 
