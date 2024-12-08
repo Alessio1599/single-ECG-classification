@@ -32,9 +32,11 @@ code/report.md
 code/transfer_learning/
 
 # Jupyter Notebook
-exploratory_data_analysis.ipynb
-basic.ipynb
 
+
+# LaTeX
+latex/
+report/
 
 ## Other folders
 exam/

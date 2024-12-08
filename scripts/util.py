@@ -40,9 +40,10 @@ def load_data(base_dir):
     #base_dir = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
     data_dir = os.path.join(base_dir, 'data')
+    raw_data_dir = os.path.join(data_dir, 'raw')
 
-    train_df = pd.read_csv(os.path.join(data_dir, 'mitbih_train.csv'), header=None)
-    test_df = pd.read_csv(os.path.join(data_dir, 'mitbih_test.csv'), header=None)
+    train_df = pd.read_csv(os.path.join(raw_data_dir, 'mitbih_train.csv'), header=None)
+    test_df = pd.read_csv(os.path.join(raw_data_dir, 'mitbih_test.csv'), header=None)
 
     x_train = train_df.iloc[:, :-1].values
     y_train = train_df.iloc[:, -1].values
@@ -290,18 +291,22 @@ def show_confusion_matrix(conf_matrix, class_names, results_dir='results', model
     plt.yticks(tick_marks, class_names)
     plt.ylabel('Real')
     plt.xlabel('Predicted')
-    #plt.colorbar()
+    
 
     for i in range(len(class_names)):
         for j in range(len(class_names)):
             text = ax.text(j, i, '{0:.1%}'.format(conf_matrix[i, j]),
                            ha='center', va='center', color='w')
+            
+    # Color bar
+    plt.colorbar(img)
+    
     # Save the figure
     plt.savefig(os.path.join(results_dir, f'{model_name}_confusion_matrix.png'))
     plt.show() #block=False
 
 
-def plot_roc_multiclass(name, labels, predictions, num_classes, **kwargs):
+def plot_roc_multiclass(labels, predictions, num_classes,results_dir='results',model_name='model', **kwargs):
     """
     Plots the ROC curve for multiclass classification.
 
@@ -336,5 +341,42 @@ def plot_roc_multiclass(name, labels, predictions, num_classes, **kwargs):
     ax = plt.gca()
     ax.set_aspect('equal')
     plt.legend(loc='best')  # Add a legend with best location
-    plt.title(f'ROC Curve - {name}')  # Add a title to the plot
-    plt.show(block=False)  # Show the plot
+    plt.title(f'ROC Curve - {model_name}')  # Add a title to the plot
+    plt.savefig(os.path.join(results_dir, f'{model_name}_classification_report.png'))
+    plt.show()  # Show the plot
+    
+
+from sklearn.metrics import precision_recall_curve, average_precision_score
+def plot_precision_recall_multiclass(name, labels, predictions, num_classes, **kwargs):
+    """
+    Plot Precision-Recall curves for multiclass classification.
+
+    Args:
+    name: str, name of the plot (e.g., 'Model Name')
+    labels: array-like, true labels
+    predictions: array-like, predicted probabilities (one column per class)
+    num_classes: int, number of classes
+    kwargs: additional arguments for the plot function
+    """
+    # Binarize the labels for multiclass classification
+    labels_bin = label_binarize(labels, classes=range(num_classes))
+
+    plt.figure(figsize=(12, 8))  # Create a new figure with a specific size
+
+    # Define a color map for different classes
+    colors = plt.cm.get_cmap('tab10', num_classes)  # Use colormap with distinct colors
+
+    # Plot Precision-Recall curve for each class
+    for i in range(num_classes):
+        precision, recall, _ = precision_recall_curve(labels_bin[:, i], predictions[:, i])
+        average_precision = average_precision_score(labels_bin[:, i], predictions[:, i])
+        plt.plot(recall, precision, label=f"Class {i} (AP = {average_precision:.2f})", color=colors(i), linestyle='-', linewidth=2, **kwargs)
+
+    plt.xlabel('Recall')
+    plt.ylabel('Precision')
+    plt.xlim([0, 1])
+    plt.ylim([0, 1])
+    plt.grid(True)
+    plt.legend(loc='best')  # Add a legend with best location
+    plt.title(f'Precision-Recall Curve - {name}')  # Add a title to the plot
+    plt.show()  # Show the plot

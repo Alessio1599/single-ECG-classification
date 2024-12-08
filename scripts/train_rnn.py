@@ -4,7 +4,14 @@ from sklearn.preprocessing import StandardScaler
 from code.utils import load_data, class_weights, plot_history
 from models.RNN import build_RNN, build_deep_rnn
 
-x_train, y_train, x_test, y_test, class_labels, class_names = load_data()
+import sys
+import os
+scripts_dir = os.path.dirname(__file__)
+base_dir = os.path.dirname(scripts_dir)
+models_dir = os.path.join(base_dir, 'models')
+sys.path.append(models_dir)
+
+x_train, y_train, x_test, y_test, class_labels, class_names = load_data(base_dir)
 print('x_train shape: ',x_train.shape) # (87554, 187)
 print('y_train shape: ',y_train.shape) # (87554,)
 
@@ -42,6 +49,9 @@ model.compile(
     loss='sparse_categorical_crossentropy', # When the labels are integers
     metrics= ['accuracy']
 )
+
+# Define the path to save the model
+model_save_path = os.path.join(models_dir, 'rnn/best_rnn_model_v1_script.keras')
 
 checkpoint = tf.keras.callbacks.ModelCheckpoint(
     'models/rnn/best_RNN_model_v1.keras',

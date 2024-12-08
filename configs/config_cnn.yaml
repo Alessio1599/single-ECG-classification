@@ -1,0 +1,20 @@
+
+model:
+  layer_1_size: 64
+  layer_2_size: 128
+  layer_3_size: 64
+  layer_FC_size: 96
+  dropout_rate: 0.1
+
+training:
+  learning_rate: 4e-4
+  batch_size: 32
+  epochs: 30
+
+data:
+  input_shape: [input_shape[0], 1]  # You might need to set this dynamically
+  output_shape: output_shape
+
+wandb:
+  project: arrhythmia-classification
+  entity: your_wandb_username  # Replace with your W&B username

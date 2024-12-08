@@ -18,23 +18,25 @@ import tensorflow as tf
 
 import sys
 import os
-code_dir = os.path.dirname(__file__) # code folder directory
-sys.path.append(code_dir)
 
-from util import load_data, show_confusion_matrix, plot_roc_multiclass
-from tensorflow.keras.models import load_model
-
-base_dir = os.path.dirname(code_dir) # base directory for the project
-
+scripts_dir = os.path.dirname(__file__)
+base_dir = os.path.dirname(scripts_dir)
+models_dir = os.path.join(base_dir, 'models')
 # Define directory to save results
 results_dir = os.path.join(base_dir, 'results')
 if not os.path.exists(results_dir):
     os.makedirs(results_dir)
 
+sys.path.append(models_dir)
+
+from util import load_data, show_confusion_matrix, plot_roc_multiclass
+from tensorflow.keras.models import load_model
+
+
 x_train, y_train, x_test, y_test, class_labels, class_names = load_data(base_dir)
 
-cnn_model = load_model(code_dir + '/models/cnn/best_cnn_model_v1.keras') #CNN_model = load_model('models/CNN_model.keras')
-rnn_model = load_model(code_dir + '/models/rnn/best_rnn_model_v1.keras')
+cnn_model = load_model(models_dir + '/cnn/best_cnn_model_v1.keras') #CNN_model = load_model('models/CNN_model.keras')
+rnn_model = load_model(models_dir + '/rnn/best_rnn_model_v1.keras')
 
 def evaluate_model(model, x_test, y_test, class_names, model_name, results_dir):
     """
