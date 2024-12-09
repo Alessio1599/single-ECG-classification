@@ -229,7 +229,7 @@ def plot_history(history,metric=None):
     metric : str, optional
         Name of the metric to plot
     """
-    fig, ax1 = plt.subplots(figsize=(6, 6)) #figsize=(10,8)
+    fig, ax1 = plt.subplots(figsize=(10, 8)) #figsize=(10,8)
 
     epoch_count=len(history.history['loss'])
 
@@ -283,7 +283,7 @@ def show_confusion_matrix(conf_matrix, class_names, results_dir='results', model
     model_name : str, optional
         Name of the model for the filename
     """
-    figsize=(10,10)
+    figsize=(10,8)
     fig, ax = plt.subplots(figsize=figsize)
     img = ax.matshow(conf_matrix)
     tick_marks = np.arange(len(class_names))
@@ -324,7 +324,7 @@ def plot_roc_multiclass(labels, predictions, num_classes,results_dir='results',m
         Additional arguments for the plot function
     """
     labels_bin = label_binarize(labels, classes=range(num_classes))
-    plt.figure(figsize=(12, 8))  # Create a new figure with a specific size
+    plt.figure(figsize=(10, 8))  # Create a new figure with a specific size
 
     # Define a color map for different classes
     colors = plt.cm.get_cmap('tab10', num_classes)  # Use colormap with distinct colors
@@ -342,7 +342,7 @@ def plot_roc_multiclass(labels, predictions, num_classes,results_dir='results',m
     ax.set_aspect('equal')
     plt.legend(loc='best')  # Add a legend with best location
     plt.title(f'ROC Curve - {model_name}')  # Add a title to the plot
-    plt.savefig(os.path.join(results_dir, f'{model_name}_classification_report.png'))
+    plt.savefig(os.path.join(results_dir, f'{model_name}_ROC.png'))
     plt.show()  # Show the plot
     
 
@@ -361,7 +361,7 @@ def plot_precision_recall_multiclass(name, labels, predictions, num_classes, **k
     # Binarize the labels for multiclass classification
     labels_bin = label_binarize(labels, classes=range(num_classes))
 
-    plt.figure(figsize=(12, 8))  # Create a new figure with a specific size
+    plt.figure(figsize=(10, 8))  # Create a new figure with a specific size
 
     # Define a color map for different classes
     colors = plt.cm.get_cmap('tab10', num_classes)  # Use colormap with distinct colors
