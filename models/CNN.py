@@ -99,4 +99,79 @@ def build_CNN_for(
     # Creating the model
     model = Model(inputs=input_layer, outputs=output_layer)
     return model 
-    
+
+from tensorflow.keras.layers import Input, Conv1D, BatchNormalization, Dropout, MaxPooling1D, Flatten, Dense
+from tensorflow.keras.models import Model
+from tensorflow.keras import activations
+
+def build_CNN_last(
+    input_shape,
+    output_shape,
+    layer_1_size,
+    layer_2_size,
+    layer_3_size,
+    number_cnn_layers,
+    filters_in_additional_layers,
+    layer_FC_size,
+    dropout_rate
+):
+    """
+    Builds a CNN model with a variable number of 1D convolutional layers using the Functional API.
+
+    Args:
+    input_shape (tuple): Shape of the input data.
+    output_shape (int): Number of classes for the output layer.
+    layer_1_size (int): Number of filters in the first convolutional layer.
+    layer_2_size (int): Number of filters in the second convolutional layer.
+    layer_3_size (int): Number of filters in the third convolutional layer.
+    number_cnn_layers (int): Total number of convolutional layers.
+    filters_in_additional_layers (int): Number of filters in additional convolutional layers beyond the third layer.
+    layer_FC_size (int): Number of neurons in the fully connected layer.
+    dropout_rate (float): Dropout rate for all dropout layers.
+
+    Returns:
+    model (Model): Keras Functional API model.
+    """
+    input_layer = Input(input_shape)
+
+    # First Convolutional Layer
+    x = Conv1D(filters=layer_1_size, kernel_size=5, padding='same')(input_layer)
+    x = BatchNormalization(momentum=0.99, epsilon=0.001)(x)
+    x = Dropout(dropout_rate)(x)
+    x = activations.relu(x)
+    x = MaxPooling1D(pool_size=2)(x)
+
+    # Second Convolutional Layer
+    x = Conv1D(filters=layer_2_size, kernel_size=3, padding='same')(x)
+    x = BatchNormalization(momentum=0.99, epsilon=0.001)(x)
+    x = Dropout(dropout_rate)(x)
+    x = activations.relu(x)
+    x = MaxPooling1D(pool_size=2)(x)
+
+    # Third Convolutional Layer
+    x = Conv1D(filters=layer_3_size, kernel_size=3, padding='same')(x)
+    x = BatchNormalization(momentum=0.99, epsilon=0.001)(x)
+    x = Dropout(dropout_rate)(x)
+    x = activations.relu(x)
+    x = MaxPooling1D(pool_size=2)(x)
+
+    # Additional Convolutional Layers
+    for i in range(number_cnn_layers - 3):
+        x = Conv1D(filters=filters_in_additional_layers, kernel_size=3, padding='same')(x)
+        x = BatchNormalization(momentum=0.99, epsilon=0.001)(x)
+        x = Dropout(dropout_rate)(x)
+        x = activations.relu(x)
+        #x = MaxPooling1D(pool_size=2)(x) I don't want to reduce too much the dimensionality
+
+    # Flatten and Dense layers
+    x = Flatten()(x)
+    x = Dense(layer_FC_size, activation='relu')(x)
+    x = Dropout(dropout_rate)(x)
+
+    # Output Layer
+    output_layer = Dense(output_shape, activation='softmax')(x)
+
+    # Creating the model
+    model = Model(inputs=input_layer, outputs=output_layer)
+
+    return model

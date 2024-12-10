@@ -218,7 +218,7 @@ def train_model(x_train, y_train, x_test, y_test, model, class_weights_dict=None
     plot_history(history, metric='accuracy')
     return model, history
 
-def plot_history(history,metric=None):
+def plot_history(history, results_dir, model_name='model', metric=None):
     """
     Plots training and validation loss and an optional metric.
 
@@ -250,7 +250,8 @@ def plot_history(history,metric=None):
         ax2.set_ylabel(metric,color=line2.get_color())
         ax2.tick_params(axis='y', labelcolor=line2.get_color())
         _=ax2.legend(loc='upper right')
-    plt.show() #block=False
+    plt.savefig(os.path.join(results_dir, f'{model_name}_training_plot.png'))
+    plt.show() 
 
 def evaluate_model(x_test, y_test, model, class_names):
     test_loss, test_accuracy, test_recall, test_precision, test_auc = model.evaluate(x_test, y_test)
