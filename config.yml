@@ -1,0 +1,5 @@
+DATASET:
+  raw_root: "data/raw"
+  deriv_root: "data/derivatives"
+RESULTS:
+  results_path: "results"

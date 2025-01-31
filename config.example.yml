@@ -1,0 +1,6 @@
+DATASET:
+  MITBIH:
+  raw_root: "path/to/MITBIH/raw_root"
+  deriv_root: "path/to/where/MITBIH/derivatives/should/be/saved"
+RESULTS:
+  results_path: "/path/to/where/results/should/be/saved"
